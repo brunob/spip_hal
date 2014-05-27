@@ -1,0 +1,27 @@
+<paquet
+	prefix="hal"
+	categorie="edition"
+	version="0.1.0"
+	etat="stable"
+	compatibilite="[3.0.0;3.0.*]"
+	logo="prive/themes/spip/images/hal-32.png"
+	schema="0.1.0"
+>	
+
+	<nom>HAL</nom>
+	<!-- Gestion des dépôts HAL dans SPIP -->
+
+	<auteur lien="http://www.kent1.info" mail="kent1@arscenic.info">kent1</auteur>
+	
+	<pipeline nom="pre_syndication_publications" action="" />
+	<pipeline nom="post_syndication_publications" action="" />
+	<pipeline nom="autoriser" inclure="hal_autoriser.php" />
+	<pipeline nom="declarer_tables_interfaces" inclure="base/hals.php" />
+	<pipeline nom="declarer_tables_objets_sql" inclure="base/hals.php" />
+	<pipeline nom="taches_generales_cron" inclure="hal_pipelines.php" />
+	<pipeline nom="optimiser_base_disparus" inclure="hal_pipelines.php" />
+
+	<menu nom="hals" titre="hal:icone_hals_references" parent="menu_edition" icone="images/hal-16.png" />
+	<menu nom="hal_creer" titre="hal:icone_referencer_nouveau_hal" parent="outils_rapides" icone="images/hal-new-16.png" action="site_edit" parametres="new=oui" />
+	<necessite nom="sites" />
+</paquet>
