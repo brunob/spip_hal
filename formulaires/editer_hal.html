@@ -1,0 +1,31 @@
+<div class="formulaire_spip formulaire_editer formulaire_#FORM formulaire_#FORM-#ENV{id_hal,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'>
+		<div>
+			[(#ACTION_FORMULAIRE{#ENV{action}})]
+			<ul>
+				<li class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{titre})</span>]
+					<label for="champ_titre"><:hal:label_titre_depot:></label>
+					<input type="text" name="titre" id="champ_titre" class='text' value="[(#ENV{titre})]" />
+				</li>
+				<li class="editer editer_descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{descriptif})</span>]
+					<label for="champ_descriptif"><:hal:label_descriptif_depot:></label>
+					<textarea name='descriptif' id='champ_descriptif' rows='4' cols='40'>[(#ENV**{descriptif})]</textarea>
+				</li>
+				<li class="editer editer_authid[ (#ENV**{erreurs}|table_valeur{authid}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{authid})</span>]
+					<label for="champ_authid"><:hal:label_authid:></label>
+					<p class="explication"><:hal:explication_authid:></p>
+					<input type="text" name="authid" id="champ_authid" class='text' value="[(#ENV{authid})]" />
+				</li>
+			</ul>
+			[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+			<!--extra-->
+			<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+		</div>
+	</form>]
+</div>
