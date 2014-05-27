@@ -1,0 +1,24 @@
+<BOUCLE_afficher_contenu(HALS_PUBLICATIONS){id_hals_publication=#ENV{id}}{statut?}>
+<div class="champ contenu_descriptif[ (#CITATION_REFERENCE*|strlen|?{'',vide})]">
+<div class='label'><:hals_publication:info_citation_reference:></div>
+<div dir='#LANG_DIR' class='#EDIT{citation_reference} citation_reference'>[(#CITATION_REFERENCE)]</div>
+</div>
+
+<div class="champ contenu_descriptif[ (#CITATION_COMPLETE*|strlen|?{'',vide})]">
+<div class='label'><:hals_publication:info_citation_complete:></div>
+<div dir='#LANG_DIR' class='#EDIT{citation_complete} citation_complete'>[(#CITATION_COMPLETE)]</div>
+</div>
+
+<div class="champ contenu_identifiant[ (#IDENTIFIANT*|strlen|?{'',vide})]">
+<div class='label'><:hals_publication:info_identifiant:></div>
+<div dir='#LANG_DIR' class='#EDIT{identifiant} identifiant'><a href="#URL">#IDENTIFIANT</a></div>
+</div>
+<div class="champ contenu_page[ (#PAGE*|strlen|?{'',vide})]">
+<div class='label'><:hals_publication:info_page:></div>
+<div dir='#LANG_DIR' class='#EDIT{page} page'>#PAGE</div>
+</div>
+<div class="champ contenu_editeur[ (#EDITEUR*|strlen|?{'',vide})]">
+<div class='label'><:hals_publication:info_editeur:></div>
+<div dir='#LANG_DIR' class='#EDIT{editeur} editeur'>#EDITEUR</div>
+</div>
+</BOUCLE_afficher_contenu>

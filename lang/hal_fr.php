@@ -6,6 +6,10 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// A
 	'avis_echec_recuperation' => 'La récupération du dépôt a échoué : impossible d\'accéder à l\'API.',
 
+	// D
+	'date_modif' => 'Date de modification',
+	'date_production' => 'Date de production',
+
 	// E
 	'explication_authid' => 'Identifiant numérique unique d\'un auteur sur HAL',
 
@@ -16,6 +20,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_referencer_nouveau_hal' => 'Référencer un nouveau dépôt',
 	'info_1_hal' => '1 dépôt HAL',
 	'info_aucun_hal' => 'Aucun dépôt HAL',
+	'info_depot_court' => 'Dépôt',
 	'info_nb_hals' => '@nb@ dépôts HAL',
 	'info_statut_hal' => 'Le dépôt est :',
 	
