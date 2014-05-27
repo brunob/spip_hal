@@ -41,4 +41,12 @@ function hal_optimiser_base_disparus($flux){
 	return $flux;
 
 }
+
+function hal_afficher_complement_objet($flux){
+	if($flux['args']['type'] == "hal"){
+		$contexte = array_merge($flux['args'],$_GET);
+		$flux['data'] .= recuperer_fond('prive/objets/liste/hals_publications',$contexte,array('ajax'=>true));
+	}
+	return $flux;
+}
 ?>

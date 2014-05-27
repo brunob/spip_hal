@@ -8,7 +8,7 @@
 	schema="0.1.0"
 >	
 
-	<nom>HAL</nom>
+	<nom>HALv3</nom>
 	<!-- Gestion des dépôts HAL dans SPIP -->
 
 	<auteur lien="http://www.kent1.info" mail="kent1@arscenic.info">kent1</auteur>
@@ -20,6 +20,7 @@
 	<pipeline nom="declarer_tables_objets_sql" inclure="base/hals.php" />
 	<pipeline nom="taches_generales_cron" inclure="hal_pipelines.php" />
 	<pipeline nom="optimiser_base_disparus" inclure="hal_pipelines.php" />
+	<pipeline nom="afficher_complement_objet" inclure="hal_pipelines.php" />
 
 	<menu nom="hals" titre="hal:icone_hals_references" parent="menu_edition" icone="images/hal-16.png" />
 	<menu nom="hal_creer" titre="hal:icone_referencer_nouveau_hal" parent="outils_rapides" icone="images/hal-new-16.png" action="site_edit" parametres="new=oui" />
