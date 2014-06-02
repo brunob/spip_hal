@@ -17,9 +17,26 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_editeur' => 'Éditeur',
 	'info_identifiant' => 'Identifiant :',
 	'info_page' => 'Pages :',
+	'info_typdoc' => 'Type de document :',
 	
 	// T
 	'titre_logo_hals_publication' => 'Logo de la publication',
+	'typdoc_art' => 'Article dans des revues',
+	'typdoc_comm' => 'Communication dans un congrès',
+	'typdoc_couv' => 'Chapitre d\'ouvrage',
+	'typdoc_img' => 'Image',
+	'typdoc_lecture' => 'Cours',
+	'typdoc_map' => 'Carte',
+	'typdoc_other' => 'Autre document',
+	'typdoc_ouv' => 'Ouvrage (y compris édition critique et traduction)',
+	'typdoc_patent' => 'Brevet',
+	'typdoc_poster' => 'Poster',
+	'typdoc_report' => 'Rapport',
+	'typdoc_son' => 'Son',
+	'typdoc_these' => 'Thèse',
+	'typdoc_undefined' => 'Preprint, Working Paper, Document de travail, etc.',
+	'typdoc_video' => 'Vidéo',
+	
 );
 
 ?>
