@@ -1,8 +1,7 @@
 <?php
 
-// prend un fichier backend et retourne un tableau des items lus,
-// et une chaine en cas d'erreur
-// http://doc.spip.org/@analyser_backend
+// prend un json issu de la recherche de HAL et retourne un tableau des documents lus,
+// et false en cas d'erreur
 function analyser_publications($json, $url_syndic='') {
 	$json = json_decode($json,true);
 	$json = pipeline('pre_syndication_publications', $json);
@@ -13,7 +12,8 @@ function analyser_publications($json, $url_syndic='') {
 		$count = 0;
 		foreach($json['response']['docs'] as $id => $doc){
 			$count++;
-			preg_match('/&lt;(hal-[0-9]*)&gt;/Uims',$doc['label_s'],$ref);
+			preg_match('/&lt;((hal|halshs)-[0-9]*)&gt;/Uims',$doc['label_s'],$ref);
+			spip_log($ref,'test.'._LOG_ERREUR);
 			$contenu_publication = recuperer_page("https://halv3-preprod.archives-ouvertes.fr/".$ref[1]."/json");
 			$contenu_publication = json_decode($contenu_publication,true);
 			if(is_array($contenu_publication) && count($contenu_publication) > 0){
@@ -65,6 +65,9 @@ function analyser_publications($json, $url_syndic='') {
 				$publications[] = $infos_publication;
 				if(!isset($infos_publication['titre']) OR $infos_publication['titre'] == null)
 					spip_log($contenu_publication,'test.'._LOG_ERREUR);
+			}
+			else{
+				spip_log($ref[1].' ne renvoit rien','test.'._LOG_ERREUR);
 			}
 		}
 	}
