@@ -68,25 +68,23 @@ function hal_inserer() {
  */
 function hal_modifier($id_hal, $set=false) {
 	include_spip('inc/modifier');
+	include_spip('inc/filtres');
 	$c = collecter_requests(
 		// white list
-		array(
-			objet_info('hal','champs_editables')
-		),
+		objet_info('hal','champs_editables'),
 		// black list
 		array('statut', 'date'),
 		// donnees eventuellement fournies
 		$set
 	);
+
 	$q = '';
 	$hal_api = "http://api-preprod.archives-ouvertes.fr/search/";
 	if(isset($c['authid']))
 		$q .= 'authId_i:'.$c['authid'];
-	//if(isset($c['structid']))
-	//	$q .= isset($c['authid'])) ? ':structId_i:'
 	
-	$hal_api = parametre_url($hal_api,'q',$q,'&');
-	$hal_api = parametre_url(parametre_url($hal_api,'sort','modifiedDate_s desc'),'rows','100','&');
+	$hal_api = parametre_url($hal_api,'q',$q);
+	$hal_api = parametre_url(parametre_url($hal_api,'sort','modifiedDate_s desc'),'rows','100');
 
 	$c['url_syndic'] = $hal_api;
 	
