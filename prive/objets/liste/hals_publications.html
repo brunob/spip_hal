@@ -24,9 +24,9 @@
 	<BOUCLE_liste_halspub(HALS_PUBLICATIONS){id_hals_publication?}{id_hal?}{where?}{recherche?}{statut?}{tri #ENV{par,date},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
 			<td class='statut'>[(#STATUT|puce_statut{hals_publication})]</td>
-			<td class='titre principale'>[<a
-					href="(#ID_HALS_PUBLICATION|generer_url_entite{hals_publication})"
-						title="<:info_numero_abbreviation|attribut_html:> #ID_HALS_PUBLICATION">#SET{a,'</a>'}]#TITRE[(#GET{a})]
+			<td class='titre principale'><a
+					href="[(#ID_HALS_PUBLICATION|generer_url_entite{hals_publication})]"
+						title="<:info_numero_abbreviation|attribut_html:> #ID_HALS_PUBLICATION">[(#TITRE|sinon{<i><:info_sans_titre:></i>})]</a>
 					[<p class="citation">(#CITATION_REFERENCE)</p>]
 			</td>
 			[(#ENV{id_hal,''}|non)
