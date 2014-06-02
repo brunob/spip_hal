@@ -13,6 +13,8 @@ function hal_declarer_tables_interfaces($interfaces){
 
 	$interfaces['table_des_tables']['hals'] = 'hals';
 	$interfaces['table_des_tables']['hals_publications'] = 'hals_publications';
+	
+	$interfaces['table_des_traitements']['TYPDOC'][] = 'typo(typdoc_propre(%s))';
 
 	return $interfaces;
 }
