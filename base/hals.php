@@ -65,6 +65,7 @@ function hal_declarer_tables_objets_sql($tables){
 		'join' => array(
 			"id_hal"=>"id_hal",
 		),
+		'champs_editables' => array('titre', 'authid', 'structid', 'descriptif'),
 		'statut' => array(
 			 array('champ'=>'statut','publie'=>'publie','previsu'=>'publie,prop','exception'=>'statut')
 		),
@@ -74,9 +75,8 @@ function hal_declarer_tables_objets_sql($tables){
 			'publie' => 'texte_statut_publie',
 			'refuse' => 'texte_statut_poubelle',
 		),
-
 		'rechercher_champs' => array(
-			'titre' => 5, 'descriptif' => 1
+			'titre' => 5,'authid' => 5, 'structid'=>5, 'descriptif' => 3
 		),
 		'champs_versionnes' => array('titre', 'descriptif','authid','structid'),
 	);
@@ -138,7 +138,7 @@ function hal_declarer_tables_objets_sql($tables){
 			'puce-rouge-anim.gif','publie'=>'puce-publier-8.png','refuse'=>'puce-supprimer-8.png','dispo'=>'puce-proposer-8.png','off'=>'puce-refuser-8.png',
 		),
 		'rechercher_champs' => array(
-				'titre' => 5, 'descriptif' => 1
+				'titre' => 5, 'descriptif' => 3, 'citation_reference' => 3, 'citation_complete' => 3, 'editeur' => 1
 		)
 	);
 
