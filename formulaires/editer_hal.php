@@ -16,7 +16,6 @@ include_spip('inc/editer');
  */
 function formulaires_editer_hal_charger_dist($id_hal='new', $retour='', $config_fonc='hals_edit_config', $row=array(), $hidden=''){
 	$valeurs = formulaires_editer_objet_charger('hal', $id_hal, null, null, $retour, '',$config_fonc);
-	spip_log($valeurs,'test.'._LOG_ERREUR);
 	return $valeurs;
 }
 
