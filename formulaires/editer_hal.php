@@ -15,7 +15,8 @@ include_spip('inc/editer');
  * @param int|string $id_hal Identifiant numérique du point ou 'new' pour un nouveau
  */
 function formulaires_editer_hal_charger_dist($id_hal='new', $retour='', $config_fonc='hals_edit_config', $row=array(), $hidden=''){
-	$valeurs = formulaires_editer_objet_charger('hal', $id_hal, '', '', $retour, '',$config_fonc,$row,$hidden);
+	$valeurs = formulaires_editer_objet_charger('hal', $id_hal, null, null, $retour, '',$config_fonc);
+	spip_log($valeurs,'test.'._LOG_ERREUR);
 	return $valeurs;
 }
 
@@ -35,14 +36,9 @@ function formulaires_editer_hal_verifier_dist($id_hal='new', $retour='', $config
 }
 
 // Choix par defaut des options de presentation
-function hals_edit_config($row)
-{
+function hals_edit_config($row){
 	global $spip_lang;
-
-	$config = $GLOBALS['meta'];
-	$config['lignes'] = 8;
-	$config['langue'] = $spip_lang;
-	return $config;
+	return array();
 }
 /**
  * Traitement des valeurs du formulaire

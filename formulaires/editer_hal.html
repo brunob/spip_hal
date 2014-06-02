@@ -4,7 +4,7 @@
 	[(#ENV{editable})
 	<form method='post' action='#ENV{action}'>
 		<div>
-			[(#ACTION_FORMULAIRE{#ENV{action}})]
+			#ACTION_FORMULAIRE{#ENV{action}}
 			<ul>
 				<li class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
 					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{titre})</span>]
