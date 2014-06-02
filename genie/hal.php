@@ -93,7 +93,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	// Creer le lien s'il est nouveau - cle=(id_hal,url)
 	// On coupe a 255 caracteres pour eviter tout doublon
 	// sur une URL de plus de 255 qui exloserait la base de donnees
-	$le_lien = substr($data['url'], 0,255);
+	$le_lien = substr($data['url_publication'], 0,255);
 
 	// si true, un lien deja syndique arrivant par une autre source est ignore
 	// par defaut [false], chaque source a sa liste de liens, eventuellement
@@ -111,7 +111,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	// (ie meme titre et pas deja fait), le mettre a jour et ignorer les autres
 	$n = 0;
 	$s = sql_select("id_hals_publication,titre,id_hal,statut", "spip_hals_publications",
-		"url=" . sql_quote($le_lien)
+		"url_publication=" . sql_quote($le_lien)
 		. (_SYNDICATION_URL_UNIQUE
 			? ''
 			: " AND id_hal=".intval($now_id_hal))
@@ -133,7 +133,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	elseif (!isset($id_hals_publication)) {
 		$champs = array(
 			'id_hal' => $now_id_hal,
-			'url' => $le_lien,
+			'url_publication' => $le_lien,
 			'date' => date("Y-m-d H:i:s"),
 			'statut'  => $statut
 		);
@@ -197,7 +197,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'args' => array(
 				'table' => 'spip_hals_publications',
 				'id_objet' => $id_hals_publication,
-				'url' => $le_lien,
+				'url_publication' => $le_lien,
 				'id_hal' => $now_id_hal,
 				'ajout' => $ajout,
 			),

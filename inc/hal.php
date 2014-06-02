@@ -30,7 +30,7 @@ function analyser_publications($json, $url_syndic='') {
 							$infos_publication['identifiant'] = $contenu_publication[$info][0];
 							break;
 						case 'uri_s':
-							$infos_publication['url'] = $contenu_publication[$info];
+							$infos_publication['url_publication'] = $contenu_publication[$info];
 							break;
 						case 'page_s':
 							$infos_publication['page'] = $contenu_publication[$info];

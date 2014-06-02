@@ -15,6 +15,10 @@ function hal_declarer_tables_interfaces($interfaces){
 	$interfaces['table_des_tables']['hals_publications'] = 'hals_publications';
 	
 	$interfaces['table_des_traitements']['TYPDOC'][] = 'typo(typdoc_propre(%s))';
+	$interfaces['table_des_traitements']['CITATION_REFERENCE'][] = 'propre(%s)';
+	$interfaces['table_des_traitements']['CITATION_COMPLETE'][] = 'propre(%s)';
+	$interfaces['table_des_traitements']['DESCRIPTIF'][] = 'propre(%s)';
+	$interfaces['table_des_traitements']['EDITEUR'][] = 'typo(%s)';
 
 	return $interfaces;
 }
@@ -58,6 +62,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"miroir"	=> "VARCHAR(3) DEFAULT 'non'",
 			"oubli"	=> "VARCHAR(3) DEFAULT 'non'"
 		),
+		'champs_editables' => array('titre', 'authid', 'descriptif'),
 		'key' => array(
 			"PRIMARY KEY"	=> "id_hal",
 			"KEY statut"	=> "statut, date_syndic",
@@ -65,7 +70,7 @@ function hal_declarer_tables_objets_sql($tables){
 		'join' => array(
 			"id_hal"=>"id_hal",
 		),
-		'champs_editables' => array('titre', 'authid', 'structid', 'descriptif'),
+		
 		'statut' => array(
 			 array('champ'=>'statut','publie'=>'publie','previsu'=>'publie,prop','exception'=>'statut')
 		),
@@ -91,7 +96,6 @@ function hal_declarer_tables_objets_sql($tables){
 		'info_1_objet' => 'hals_publication:info_1_hals_publication',
 		'info_nb_objets' => 'hals_publication:info_nb_hals_publications',
 		'date' => 'date_production',
-		'editable' => 'oui',
 		'principale' => 'oui',
 		'field'=> array(
 			"id_hals_publication"	=> "bigint(21) NOT NULL",
@@ -108,7 +112,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"citation_reference"	=> "text DEFAULT '' NOT NULL",
 			"citation_complete"	=> "text DEFAULT '' NOT NULL",
 			"page"	=> "VARCHAR(255) DEFAULT '' NOT NULL",
-			"url"	=> "VARCHAR(255) DEFAULT '' NOT NULL",
+			"url_publication"	=> "VARCHAR(255) DEFAULT '' NOT NULL",
 			"format" => "VARCHAR(255) DEFAULT '' NOT NULL",
 			"date"	=> "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"lesauteurs"	=> "text DEFAULT '' NOT NULL",
@@ -124,7 +128,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"PRIMARY KEY"	=> "id_hals_publication",
 			"KEY id_hal"	=> "id_hal",
 			"KEY statut"	=> "statut",
-			"KEY url"	=> "url"
+			"KEY url_publication"	=> "url_publication"
 		),
 		'join' => array(
 			"id_hals_publication"=>"id_hals_publication",
