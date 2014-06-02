@@ -102,6 +102,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"date_soumission" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"date_modif" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"date_production" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
+			"date_production_format" => "VARCHAR(255) DEFAULT '' NOT NULL",
 			"editeur" => "text DEFAULT '' NOT NULL",
 			"titre"	=> "text DEFAULT '' NOT NULL",
 			"citation_reference"	=> "text DEFAULT '' NOT NULL",

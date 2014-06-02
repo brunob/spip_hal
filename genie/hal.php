@@ -28,7 +28,6 @@ function executer_une_syndication_hal() {
 		// inserer la tache dans la file, avec controle d'unicite
 		job_queue_add('hal_a_jour','hal_a_jour',array($id_hal),'genie/hal',true);
 	}
-
 	return 0;
 }
 
@@ -178,6 +177,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'typdoc' => $data['typdoc'],
 			'date_soumission' => $data['date_soumission'],
 			'date_production' => $data['date_production'],
+			'date_production_format' => $data['date_production_format'],
 			'date_modif' => $data['date_modif'],
 			'citation_reference' => $data['citation_reference'],
 			'citation_complete' => $data['citation_complete'],

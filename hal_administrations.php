@@ -14,6 +14,9 @@ function hal_upgrade($nom_meta_base_version,$version_cible){
 	$maj['create'] = array(
 		array('maj_tables',array('spip_hals','spip_hals_publications')),
 	);
+	$maj['0.1.1'] = array(
+		array('maj_tables',array('spip_hals_publications')),
+	);
 	
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);

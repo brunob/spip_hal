@@ -13,7 +13,6 @@ function analyser_publications($json, $url_syndic='') {
 		foreach($json['response']['docs'] as $id => $doc){
 			$count++;
 			preg_match('/&lt;((hal|halshs)-[0-9]*)&gt;/Uims',$doc['label_s'],$ref);
-			spip_log($ref,'test.'._LOG_ERREUR);
 			$contenu_publication = recuperer_page("https://halv3-preprod.archives-ouvertes.fr/".$ref[1]."/json");
 			$contenu_publication = json_decode($contenu_publication,true);
 			if(is_array($contenu_publication) && count($contenu_publication) > 0){
@@ -29,14 +28,19 @@ function analyser_publications($json, $url_syndic='') {
 								$infos_publication['date_soumission'] = $contenu_publication[$info];
 								break;
 							case 'producedDate':
-								if(strlen($contenu_publication[$info]) == 4 && preg_match('/\d{4}/',$contenu_publication[$info]))
+								if(strlen($contenu_publication[$info]) == 4 && preg_match('/\d{4}/',$contenu_publication[$info])){
 									$infos_publication['date_production'] = $contenu_publication[$info].'-01-01 00:00:00';
-								else if(strlen($contenu_publication[$info]) == 7 && preg_match('/\d{4}-\d{2}/',$contenu_publication[$info]))
+									$infos_publication['date_production_format'] = 'annee';
+								}else if(strlen($contenu_publication[$info]) == 7 && preg_match('/\d{4}-\d{2}/',$contenu_publication[$info])){
 									$infos_publication['date_production'] = $contenu_publication[$info].'-01 00:00:00';
-								else if(strlen($contenu_publication[$info]) == 10 && preg_match('/\d{4}-\d{2}-\d{2}/',$contenu_publication[$info]))
+									$infos_publication['date_production_format'] = 'mois';
+								}else if(strlen($contenu_publication[$info]) == 10 && preg_match('/\d{4}-\d{2}-\d{2}/',$contenu_publication[$info])){
 									$infos_publication['date_production'] = $contenu_publication[$info].' 00:00:00';
-								else
+									$infos_publication['date_production_format'] = 'jour';
+								}else if(strlen($contenu_publication[$info]) == 19){
 									$infos_publication['date_production'] = $contenu_publication[$info];
+									$infos_publication['date_production_format'] = 'complet';
+								}
 								break;
 							case 'modifiedDate':
 								$infos_publication['date_modif'] = $contenu_publication[$info];
