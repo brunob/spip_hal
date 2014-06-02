@@ -60,6 +60,8 @@ function hal_a_jour($now_id_hal) {
 	// Aller chercher les donnees du JSON et les analyser
 	include_spip('inc/distant');
 
+	$url_syndic = parametre_url($url_syndic,'fl','*','&');
+
 	$json = recuperer_page($url_syndic, true);
 
 	if (!$json)
@@ -132,7 +134,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 		$champs = array(
 			'id_hal' => $now_id_hal,
 			'url' => $le_lien,
-			'date' => date("Y-m-d H:i:s", $data['date_modif'] ? $data['date_modif'] : $data['date_soumission']),
+			'date' => date("Y-m-d H:i:s"),
 			'statut'  => $statut
 		);
 		// Envoyer aux plugins
@@ -182,6 +184,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'citation_reference' => $data['citation_reference'],
 			'citation_complete' => $data['citation_complete'],
 			'page' => $data['page'],
+			'lesauteurs' => $data['lesauteurs'],
 			//'format' => $data['format'],
 			'hal_complet' => $data['hal_complet'],
 			'lang'=> substr($data['lang'],0,10));
