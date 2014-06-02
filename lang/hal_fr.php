@@ -20,9 +20,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'icone_referencer_nouveau_hal' => 'Référencer un nouveau dépôt',
 	'info_1_hal' => '1 dépôt HAL',
 	'info_aucun_hal' => 'Aucun dépôt HAL',
+	'info_authid' => 'Identifiant auteur dans HAL :',
 	'info_depot_court' => 'Dépôt',
 	'info_nb_hals' => '@nb@ dépôts HAL',
 	'info_statut_hal' => 'Le dépôt est :',
+	'info_url_syndic' => 'Url de syndication :',
 	
 	// L
 	'label_authid' => 'Identifiant numérique d\'un auteur',

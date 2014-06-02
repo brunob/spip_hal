@@ -1,0 +1,53 @@
+[(#AUTORISER{voir,hal,#ID_HAL}|sinon_interdire_acces)]
+<BOUCLE_hal(HALS){id_hal}{statut==.*}{si #ENV{exec}|=={hal}}>
+[(#LANG|changer_typo)]
+[(#BOITE_OUVRIR{[
+				
+	[(#AUTORISER{modifier,hal,#ID_HAL})
+				
+		[(#ID_HAL|afficher_qui_edite{hal}|non)
+			[(#URL_ECRIRE{hal_edit,id_hal=#ID_HAL}|icone_verticale{<:hal:icone_modifier_hal:>,hal,edit,right ajax preload})]
+		]
+		[(#ID_HAL|afficher_qui_edite{hal}|oui)
+			[(#URL_ECRIRE{hal_edit,id_hal=#ID_HAL}|icone_verticale{#ID_HAL|afficher_qui_edite{hal},warning-24,'',right edition_deja ajax preload})]
+		]
+	]
+	[<h4 class='surtitre'>(#SURTITRE)</h4>]
+	<h1>[(#RANG). ](#TITRE|sinon{<:info_sans_titre:>})[(#CHEMIN_IMAGE{hal-24.png}|balise_img{hal,cadre-icone})]</h1>
+	[<h2 class='soustitre'>(#SOUSTITRE)</h2>]
+],simple fiche_objet})]
+[(#REM|changer_typo)]
+<div class="ajax">
+	#FORMULAIRE_DATER{hal,#ID_HAL}
+</div>
+
+<div class="ajax">
+	#FORMULAIRE_EDITER_LIENS{auteurs,hal,#ID_HAL}
+</div>
+
+<!--affiche_milieu-->
+<div id="wysiwyg">
+<INCLURE{fond=prive/objets/contenu/hal,id=#ID_HAL,id_hal=#ID_HAL,virtuel=oui,ajax=wysiwyg,wysiwyg=1}>
+</div>
+
+<div class="nettoyeur"></div>
+
+[(#AUTORISER{modifier,hal,#ID_HAL})
+
+	[(#ID_HAL|afficher_qui_edite{hal}|non)
+		[(#URL_ECRIRE{hal_edit,id_hal=#ID_HAL}|icone_verticale{<:hal:icone_modifier_hal:>,hal,edit,right ajax preload})]
+	]
+	[(#ID_HAL|afficher_qui_edite{hal}|oui)
+		[(#URL_ECRIRE{hal_edit,id_hal=#ID_HAL}|icone_verticale{#ID_HAL|afficher_qui_edite{hal},warning-24,'',right edition_deja ajax preload})]
+	]
+]
+
+#PIPELINE{afficher_complement_objet,#ARRAY{args,#ARRAY{type,hal,id,#ID_HAL},data,'<div class="nettoyeur"></div>'}}
+
+#BOITE_FERMER
+[(#EVAL{_AJAX}|oui)
+	<script type="text/javascript">/*<!\[CDATA\[*/reloadExecPage('#ENV{exec}','#navigation,#chemin,#extra');/*\]\]>*/</script>
+]
+</BOUCLE_hal>
+[(#ENV**{exec}|=={hal_edit}|?{#INCLURE{fond=prive/squelettes/contenu/hal_edit,redirect='',env,retourajax=oui},#REM|sinon_interdire_acces})]
+<//B_hal>
