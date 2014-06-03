@@ -1,5 +1,7 @@
 <?php
 
+if (!defined("_ECRIRE_INC_VERSION")) return;
+
 // prend un json issu de la recherche de HAL et retourne un tableau des documents lus,
 // et false en cas d'erreur
 function analyser_publications($json, $url_syndic='') {
@@ -7,83 +9,85 @@ function analyser_publications($json, $url_syndic='') {
 	$json = pipeline('pre_syndication_publications', $json);
 	$publications  = false;
 	if(isset($json['response']) && isset($json['response']['docs']) && is_array($json['response']['docs'])){
-		include_spip('inc/distant');
 		$publications = array();
 		$count = 0;
 		foreach($json['response']['docs'] as $id => $contenu_publication){
 			$count++;
 			$infos_publication = array();
 			$affiche = false;
-			foreach(array('docid','language_s','title_s','subTitle_s','hal_id','uri_s','page_s','docType_s','publisher_s','submittedDate_s','producedDate_s','modifiedDate_s','citationRef_s','citationFull_s','authFullName_s') as $info){
-				if(isset($contenu_publication[$info]) && (is_array($contenu_publication[$info]) OR (strlen($contenu_publication[$info]) > 0))){
-					switch ($info) {
-						case 'docid':
-							$infos_publication['docid'] = $contenu_publication[$info];
-							break;
-						case 'title_s':
-							$infos_publication['titre'] = $contenu_publication[$info][0];
-							break;
-						case 'subTitle_s':
-							$infos_publication['soustitre'] = $contenu_publication[$info][0];
-							break;
-						case 'hal_id':
-							$infos_publication['identifiant'] = $contenu_publication[$info][0];
-							break;
-						case 'uri_s':
-							$infos_publication['url_publication'] = $contenu_publication[$info];
-							break;
-						case 'page_s':
-							$infos_publication['page'] = $contenu_publication[$info];
-							break;
-						case 'docType_s':
-							$infos_publication['typdoc'] = $contenu_publication[$info];
-							break;
+			/**
+			 * Correspondance des items du json par rapport aux champs de la base de donnée
+			 */
+			$champs = array(
+						'docid' => 'docid',
+						'language_s' => 'lang',
+						'title_s' => 'titre',
+						'subTitle_s' => 'soustitre',
+						'hal_id' => 'identifiant',
+						'uri_s' => 'url_publication',
+						'page_s' => 'page',
+						'docType_s' => 'typdoc',
+						'publisher_s' => 'editeur',
+						'submittedDate_s' => 'date_soumission',
+						'producedDate_s' => 'date_production',
+						'modifiedDate_s' => 'date_modif',
+						'citationRef_s' => 'citation_reference',
+						'citationFull_s' => 'citation_complete',
+						'authFullName_s' => 'lesauteurs',
+						'bookTitle_s' => 'livre',
+						'journalTitle_s' => 'revue',
+						'journalId_i' => 'revue_id',
+						'comment_s' => 'commentaire');
+			foreach($champs as $champ => $base){
+				if(isset($contenu_publication[$champ]) && (is_array($contenu_publication[$champ]) OR (strlen($contenu_publication[$champ]) > 0))){
+					switch ($champ) {
 						case 'publisher_s':
-							$infos_publication['editeur'] = implode(',',$contenu_publication[$info]);
-							break;
-						case 'submittedDate_s':
-							$infos_publication['date_soumission'] = $contenu_publication[$info];
+							$infos_publication[$base] = implode(', ',$contenu_publication[$champ]);
 							break;
 						case 'producedDate_s':
-							if(strlen($contenu_publication[$info]) == 4 && preg_match('/\d{4}/',$contenu_publication[$info])){
-								$infos_publication['date_production'] = $contenu_publication[$info].'-01-01 00:00:00';
+							if(strlen($contenu_publication[$champ]) == 4 && preg_match('/\d{4}/',$contenu_publication[$champ])){
+								$infos_publication[$base] = $contenu_publication[$champ].'-01-01 00:00:00';
 								$infos_publication['date_production_format'] = 'annee';
-							}else if(strlen($contenu_publication[$info]) == 7 && preg_match('/\d{4}-\d{2}/',$contenu_publication[$info])){
-								$infos_publication['date_production'] = $contenu_publication[$info].'-01 00:00:00';
+							}else if(strlen($contenu_publication[$champ]) == 7 && preg_match('/\d{4}-\d{2}/',$contenu_publication[$champ])){
+								$infos_publication[$base] = $contenu_publication[$champ].'-01 00:00:00';
 								$infos_publication['date_production_format'] = 'mois';
-							}else if(strlen($contenu_publication[$info]) == 10 && preg_match('/\d{4}-\d{2}-\d{2}/',$contenu_publication[$info])){
-								$infos_publication['date_production'] = $contenu_publication[$info].' 00:00:00';
+							}else if(strlen($contenu_publication[$champ]) == 10 && preg_match('/\d{4}-\d{2}-\d{2}/',$contenu_publication[$champ])){
+								$infos_publication[$base] = $contenu_publication[$champ].' 00:00:00';
 								$infos_publication['date_production_format'] = 'jour';
-							}else if(strlen($contenu_publication[$info]) == 19){
-								$infos_publication['date_production'] = $contenu_publication[$info];
+							}else if(strlen($contenu_publication[$champ]) == 19){
+								$infos_publication[$base] = $contenu_publication[$champ];
 								$infos_publication['date_production_format'] = 'complet';
 							}
 							break;
-						case 'modifiedDate_s':
-							$infos_publication['date_modif'] = $contenu_publication[$info];
-							break;
-						case 'citationRef_s':
-							$infos_publication['citation_reference'] = $contenu_publication[$info];
-							break;
-						case 'citationFull_s':
-							$infos_publication['citation_complete'] = $contenu_publication[$info];
-							break;
 						case 'language_s':
-							$infos_publication['lang'] = $contenu_publication[$info][0];
+							$infos_publication[$base] = $contenu_publication[$champ][0];
 							break;
 						case 'authFullName_s':
-							$infos_publication['lesauteurs'] = implode(',',$contenu_publication[$info]);
+							$infos_publication[$base] = implode(', ',$contenu_publication[$champ]);
 							break;
 						default: 
-							$infos_publication[$info] = $contenu_publication[$info];
+							$infos_publication[$base] = $contenu_publication[$champ];
 							break;
 					}
 				}
 			}
+			/**
+			 * On va chercher les ISBNs dans les citations
+			 */
+			foreach(array('citation_reference','citation_complete') as $info){
+				if(isset($infos_publication[$info]) && (strlen($infos_publication[$info]) > 0)){
+					if(preg_match('/ISBN ([0-9\-]{10,17}) /Uims',$infos_publication[$info],$matches)){
+						$infos_publication['isbn'] = $matches[1];
+						continue;
+					}
+				}
+			}
+			/**
+			 * On conserve l'ensemble des infos du document au cas où quand même
+			 */
 			$infos_publication['hal_complet'] = serialize($contenu_publication);
+			
 			$publications[] = $infos_publication;
-			if(!isset($infos_publication['titre']) OR $infos_publication['titre'] == null)
-				spip_log($contenu_publication,'test.'._LOG_ERREUR);
 		}
 	}
 	spip_log($count.'/'.$json['response']['numFound'],'test.'._LOG_ERREUR);

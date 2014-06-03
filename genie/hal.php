@@ -175,6 +175,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	$vals = array(
 			'docid' => $data['docid'],
 			'titre' => $data['titre'],
+			'soustitre' => $data['soustitre'],
 			'identifiant' => $data['identifiant'],
 			'typdoc' => $data['typdoc'],
 			'date_soumission' => $data['date_soumission'],
@@ -185,6 +186,11 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'citation_complete' => $data['citation_complete'],
 			'page' => $data['page'],
 			'lesauteurs' => $data['lesauteurs'],
+			'livre' => $data['livre'],
+			'revue' => $data['revue'],
+			'revue_id' => $data['revue_id'],
+			'commentaire' => $data['commentaire'],
+			'isbn' => $data['isbn'],
 			//'format' => $data['format'],
 			'hal_complet' => $data['hal_complet'],
 			'lang'=> substr($data['lang'],0,10));
