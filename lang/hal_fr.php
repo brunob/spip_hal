@@ -30,6 +30,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_authid' => 'Identifiant numérique d\'un auteur',
 	'label_descriptif_depot' => 'Descriptif du dépôt',
 	'label_titre_depot' => 'Titre du dépôt',
+	'lien_notice_complete' => 'Voir la notice complète sur HAL',
 	
 	// T
 	'titre_logo_hal' => 'Logo du dépôt',
