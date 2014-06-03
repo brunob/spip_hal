@@ -101,6 +101,8 @@ function hal_declarer_tables_objets_sql($tables){
 			"id_hals_publication"	=> "bigint(21) NOT NULL",
 			"id_hal"	=> "bigint(21) DEFAULT '0' NOT NULL",
 			"docid" => "bigint(21) DEFAULT '0' NOT NULL",
+			"titre"	=> "text DEFAULT '' NOT NULL",
+			"soustitre"	=> "text DEFAULT '' NOT NULL",
 			"identifiant" => "text DEFAULT '' NOT NULL",
 			"typdoc" => "text DEFAULT '' NOT NULL",
 			"date_soumission" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
@@ -108,7 +110,6 @@ function hal_declarer_tables_objets_sql($tables){
 			"date_production" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"date_production_format" => "VARCHAR(255) DEFAULT '' NOT NULL",
 			"editeur" => "text DEFAULT '' NOT NULL",
-			"titre"	=> "text DEFAULT '' NOT NULL",
 			"citation_reference"	=> "text DEFAULT '' NOT NULL",
 			"citation_complete"	=> "text DEFAULT '' NOT NULL",
 			"page"	=> "VARCHAR(255) DEFAULT '' NOT NULL",
@@ -119,6 +120,11 @@ function hal_declarer_tables_objets_sql($tables){
 			"maj"	=> "TIMESTAMP",
 			"statut"	=> "varchar(10) DEFAULT '0' NOT NULL",
 			"descriptif"	=> "text DEFAULT '' NOT NULL",
+			"livre" => "text DEFAULT '' NOT NULL",
+			"revue" => "text DEFAULT '' NOT NULL",
+			"revue_id" => "bigint(21) DEFAULT '0' NOT NULL",
+			"commentaire" => "text DEFAULT '' NOT NULL",
+			"isbn" => "text DEFAULT '' NOT NULL",
 			"lang"	=> "VARCHAR(10) DEFAULT '' NOT NULL",
 			"url_source" => "TINYTEXT DEFAULT '' NOT NULL",
 			"tags" => "TEXT DEFAULT '' NOT NULL",
@@ -142,7 +148,7 @@ function hal_declarer_tables_objets_sql($tables){
 			'puce-rouge-anim.gif','publie'=>'puce-publier-8.png','refuse'=>'puce-supprimer-8.png','dispo'=>'puce-proposer-8.png','off'=>'puce-refuser-8.png',
 		),
 		'rechercher_champs' => array(
-				'titre' => 5, 'descriptif' => 3, 'citation_reference' => 3, 'citation_complete' => 3, 'editeur' => 1
+				'titre' => 5, 'soustitre' => 3, 'descriptif' => 3, 'citation_reference' => 3, 'citation_complete' => 3, 'livre' => 2,'revue' => 2,'editeur' => 1
 		)
 	);
 
