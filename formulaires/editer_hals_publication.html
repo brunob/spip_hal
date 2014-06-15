@@ -1,0 +1,20 @@
+<div class="formulaire_spip formulaire_editer formulaire_#FORM formulaire_#FORM-#ENV{id_hal,nouveau}">
+	[<p class="reponse_formulaire reponse_formulaire_ok">(#ENV**{message_ok})</p>]
+	[<p class="reponse_formulaire reponse_formulaire_erreur">(#ENV*{message_erreur})</p>]
+	[(#ENV{editable})
+	<form method='post' action='#ENV{action}'>
+		<div>
+			#ACTION_FORMULAIRE{#ENV{action}}
+			<ul>
+				<li class="editer editer_descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{descriptif})</span>]
+					<label for="champ_descriptif"><:hals_publication:label_descriptif_publication:></label>
+					<textarea name='descriptif' id='champ_descriptif' rows='4' cols='40'>[(#ENV**{descriptif})]</textarea>
+				</li>
+			</ul>
+			[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
+			<!--extra-->
+			<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
+		</div>
+	</form>]
+</div>
