@@ -36,7 +36,6 @@ function hal_optimiser_base_disparus($flux){
 			"hal.id_hal IS NULL");
 
 	$n+= optimiser_sansref('spip_hals_publications', 'id_hal', $res);
-	
 
 	return $flux;
 
@@ -46,6 +45,14 @@ function hal_afficher_complement_objet($flux){
 	if($flux['args']['type'] == "hal"){
 		$contexte = array_merge($flux['args'],$_GET);
 		$flux['data'] .= recuperer_fond('prive/objets/liste/hals_publications',$contexte,array('ajax'=>true));
+	}
+	return $flux;
+}
+
+function hal_affiche_milieu($flux){
+	if($flux['args']['exec'] == "auteur"){
+		$contexte = array_merge(array('id_auteur'=>$flux['args']['id_auteur']),$_GET);
+		$flux['data'] .= recuperer_fond('prive/objets/liste/hals',$contexte,array('ajax'=>true));
 	}
 	return $flux;
 }

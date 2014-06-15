@@ -21,6 +21,7 @@
 	<pipeline nom="taches_generales_cron" inclure="hal_pipelines.php" />
 	<pipeline nom="optimiser_base_disparus" inclure="hal_pipelines.php" />
 	<pipeline nom="afficher_complement_objet" inclure="hal_pipelines.php" />
+	<pipeline nom="affiche_milieu" inclure="hal_pipelines.php" />
 
 	<menu nom="hals" titre="hal:icone_hals_references" parent="menu_edition" icone="images/hal-16.png" />
 	<menu nom="hal_creer" titre="hal:icone_referencer_nouveau_hal" parent="outils_rapides" icone="images/hal-new-16.png" action="hal_edit" parametres="new=oui" />
