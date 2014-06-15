@@ -22,6 +22,9 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_page' => 'Pages :',
 	'info_typdoc' => 'Type de document :',
 	
+	//
+	'label_descriptif_publication' => 'Descriptif de la publication',
+
 	// T
 	'titre_logo_hals_publication' => 'Logo de la publication',
 	'typdoc_art' => 'Article dans des revues',
