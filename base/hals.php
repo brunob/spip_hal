@@ -88,6 +88,8 @@ function hal_declarer_tables_objets_sql($tables){
 
 	$tables['spip_hals_publications'] = array(
 		'type'=>'hals_publication',
+		'table_objet' => 'hals_publications',
+		'table_objet_surnoms' => array('halspublication'),
 		'texte_retour' => 'icone_retour',
 		'texte_objets' => 'hals_publication:icone_hals_publications',
 		'texte_objet' => 'hals_publication:icone_hals_publication',
@@ -147,6 +149,10 @@ function hal_declarer_tables_objets_sql($tables){
 		'statut_images' => array(
 			'puce-rouge-anim.gif','publie'=>'puce-publier-8.png','refuse'=>'puce-supprimer-8.png','dispo'=>'puce-proposer-8.png','off'=>'puce-refuser-8.png',
 		),
+		'url_voir' => 'hals_publication',
+		'url_edit' => 'hals_publication_edit',
+		'editable' => 'oui',
+		'champs_editables' => array('descriptif','titre'),
 		'rechercher_champs' => array(
 				'titre' => 5, 'soustitre' => 3, 'descriptif' => 3, 'citation_reference' => 3, 'citation_complete' => 3, 'livre' => 2,'revue' => 2,'editeur' => 1
 		)
