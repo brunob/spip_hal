@@ -16,7 +16,7 @@
 		</tr>
 	</thead>
 	<tbody>
-	<BOUCLE_liste_hals(HALS){id_hal?}{id_hal?}{where?}{recherche?}{statut?}{tri #ENV{par,date},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
+	<BOUCLE_liste_hals(HALS){id_hal?}{id_auteur?}{where?}{recherche?}{statut?}{tri #ENV{par,date},#GET{defaut_tri}}{pagination #ENV{nb,10}}>
 		<tr class="[(#COMPTEUR_BOUCLE|alterner{row_odd,row_even})]">
 			<td class='statut'>[(#STATUT|puce_statut{hal})]</td>
 			<td class='titre principale'><a
