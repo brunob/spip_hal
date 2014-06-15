@@ -27,7 +27,7 @@
 			<td class='titre principale'><a
 					href="[(#ID_HALS_PUBLICATION|generer_url_entite{hals_publication})]"
 						title="<:info_numero_abbreviation|attribut_html:> #ID_HALS_PUBLICATION">[(#TITRE|sinon{<i><:info_sans_titre:></i>})]</a>
-					[<p class="citation">(#CITATION_REFERENCE)</p>]
+					[<div class="citation">(#CITATION_REFERENCE)</div>]
 			</td>
 			[(#ENV{id_hal,''}|non)
 			<td class='hal'><a href="[(#ID_HAL|generer_url_entite{hal})]"

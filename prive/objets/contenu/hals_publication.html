@@ -1,4 +1,9 @@
 <BOUCLE_afficher_contenu(HALS_PUBLICATIONS){id_hals_publication=#ENV{id}}{statut?}>
+<div class="champ contenu_descriptif[ (#DESCRIPTIF*|strlen|?{'',vide})]">
+<div class='label'><:info_descriptif:></div>
+<div dir='#LANG_DIR' class='#EDIT{descriptif} citation_reference'>[(#DESCRIPTIF)]</div>
+</div>
+
 <div class="champ contenu_descriptif[ (#CITATION_REFERENCE*|strlen|?{'',vide})]">
 <div class='label'><:hals_publication:info_citation_reference:></div>
 <div dir='#LANG_DIR' class='#EDIT{citation_reference} citation_reference'>[(#CITATION_REFERENCE)]</div>
