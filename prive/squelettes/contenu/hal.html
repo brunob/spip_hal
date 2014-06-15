@@ -30,6 +30,10 @@
 <INCLURE{fond=prive/objets/contenu/hal,id=#ID_HAL,id_hal=#ID_HAL,ajax=wysiwyg,wysiwyg=1}>
 </div>
 
+<div class='mise_a_jour_syndic'>
+	[(#BOUTON_ACTION{<:hal:lien_mise_a_jour_publications:>,#URL_ACTION_AUTEUR{update_publications,#ID_HAL,#SELF},ajax})]
+</div>
+
 <div class="nettoyeur"></div>
 
 [(#AUTORISER{modifier,hal,#ID_HAL})
