@@ -143,11 +143,15 @@ function hal_declarer_tables_objets_sql($tables){
 			"id_hal"=>"id_hal"
 		),
 		'statut' => array(
-			array('champ'=>'statut','publie'=>'publie','previsu'=>'publie,prop','exception'=>'statut'),
+			array('champ'=>'statut','publie'=>'publie','previsu'=>'publie','exception'=>'statut'),
 			array('champ'=>array(array('spip_hals','id_hal'),'statut'),'publie'=>'publie','previsu'=>'publie,prop','exception'=>'statut'),
 		),
 		'statut_images' => array(
-			'puce-rouge-anim.gif','publie'=>'puce-publier-8.png','refuse'=>'puce-supprimer-8.png','dispo'=>'puce-proposer-8.png','off'=>'puce-refuser-8.png',
+			'publie'=>'puce-publier-8.png','refuse'=>'puce-refuser-8.png'
+		),
+		'statut_textes_instituer' => array(
+			'publie' => 'texte_statut_publie',
+			'refuse' => 'texte_statut_refuse',
 		),
 		'url_voir' => 'hals_publication',
 		'url_edit' => 'hals_publication_edit',
