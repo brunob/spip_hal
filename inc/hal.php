@@ -65,8 +65,19 @@ function analyser_publications($json, $url_syndic='') {
 						case 'authFullName_s':
 							$infos_publication[$base] = implode(', ',$contenu_publication[$champ]);
 							break;
-						default: 
-							$infos_publication[$base] = $contenu_publication[$champ];
+						default:
+							if(is_array($contenu_publication[$champ])){
+								if(count($contenu_publication[$champ]) == 1)
+									$infos_publication[$base] = $contenu_publication[$champ][0];
+								else{
+									$infos_publication[$base] = "<multi>";
+									foreach($contenu_publication[$champ] as $key => $content){
+										$infos_publication[$base] .= "[".$contenu_publication['language_s'][$key]."]".$content;
+									}
+									$infos_publication[$base] .= "</multi>";
+								}
+							}else
+								$infos_publication[$base] = $contenu_publication[$champ];
 							break;
 					}
 				}
