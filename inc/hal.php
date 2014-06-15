@@ -90,7 +90,6 @@ function analyser_publications($json, $url_syndic='') {
 			$publications[] = $infos_publication;
 		}
 	}
-	spip_log($count.'/'.$json['response']['numFound'],'test.'._LOG_ERREUR);
 	return $publications;
 }
 
