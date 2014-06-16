@@ -23,6 +23,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_authid' => 'Identifiant auteur dans HAL :',
 	'info_depot_court' => 'Dépôt',
 	'info_nb_hals' => '@nb@ dépôts HAL',
+	'info_nb_publications' => 'Publications',
 	'info_statut_hal' => 'Le dépôt est :',
 	'info_url_syndic' => 'Url de syndication :',
 	

@@ -20,6 +20,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_identifiant' => 'Identifiant :',
 	'info_lesauteurs' => 'Auteur(s) :',
 	'info_page' => 'Pages :',
+	'info_revue' => 'Revue :',
 	'info_typdoc' => 'Type de document :',
 	
 	//

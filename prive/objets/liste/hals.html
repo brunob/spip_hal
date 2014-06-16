@@ -12,6 +12,7 @@
 		<tr class='first_row'>
 			<th class='statut' scope='col'>[(#TRI{statut,<span title="<:lien_trier_statut|attribut_html:>">#</span>,ajax})]</th>
 			<th class='titre' scope='col'>[(#TRI{titre,<:info_titre:>,ajax})]</th>
+			<th class='nb_publications' scope='col'><:hal:info_nb_publications:></th>
 			<th class='id' scope='col'>[(#TRI{id_hal,<:info_numero_abbreviation:>,ajax})]</th>
 		</tr>
 	</thead>
@@ -22,6 +23,10 @@
 			<td class='titre principale'><a
 					href="[(#ID_HAL|generer_url_entite{hal})]"
 						title="<:info_numero_abbreviation|attribut_html:> #ID_HAL">[(#TITRE|sinon{<i><:info_sans_titre:></i>})]</a>
+			</td>
+			<td class="nb_publications">
+				<BOUCLE_publications(HALS_PUBLICATIONS){id_hal}> </BOUCLE_publications>
+				#TOTAL_BOUCLE</B_publications>
 			</td>
 			<td class='id'>[(#AUTORISER{modifier,hal,#ID_HAL}|?{
 				<a href="[(#URL_ECRIRE{hal_edit,id_hal=#ID_HAL})]">#ID_HAL</a>,
