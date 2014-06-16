@@ -37,7 +37,9 @@ function analyser_publications($json, $url_syndic='') {
 						'bookTitle_s' => 'livre',
 						'journalTitle_s' => 'revue',
 						'journalId_i' => 'revue_id',
-						'comment_s' => 'commentaire');
+						'journalDate_s' => 'date_revue',
+						'comment_s' => 'commentaire',
+						'issue_s' => 'issue');
 			foreach($champs as $champ => $base){
 				if(isset($contenu_publication[$champ]) && (is_array($contenu_publication[$champ]) OR (strlen($contenu_publication[$champ]) > 0))){
 					switch ($champ) {
@@ -57,6 +59,19 @@ function analyser_publications($json, $url_syndic='') {
 							}else if(strlen($contenu_publication[$champ]) == 19){
 								$infos_publication[$base] = $contenu_publication[$champ];
 								$infos_publication['date_production_format'] = 'complet';
+							}
+							break;
+						case 'journalDate_s':
+						case 'submittedDate_s':
+						case 'modifiedDate_s':
+							if(strlen($contenu_publication[$champ]) == 4 && preg_match('/\d{4}/',$contenu_publication[$champ])){
+								$infos_publication[$base] = $contenu_publication[$champ].'-01-01 00:00:00';
+							}else if(strlen($contenu_publication[$champ]) == 7 && preg_match('/\d{4}-\d{2}/',$contenu_publication[$champ])){
+								$infos_publication[$base] = $contenu_publication[$champ].'-01 00:00:00';
+							}else if(strlen($contenu_publication[$champ]) == 10 && preg_match('/\d{4}-\d{2}-\d{2}/',$contenu_publication[$champ])){
+								$infos_publication[$base] = $contenu_publication[$champ].' 00:00:00';
+							}else if(strlen($contenu_publication[$champ]) == 19){
+								$infos_publication[$base] = $contenu_publication[$champ];
 							}
 							break;
 						case 'language_s':
