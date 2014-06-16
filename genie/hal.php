@@ -22,7 +22,7 @@ function genie_hal_dist($t) {
 //
 function executer_une_syndication_hal() {
 	// Et un site 'oui' de plus de 2 heures, qui passe en 'sus' s'il echoue
-	$where = "NOT(" . sql_date_proche('date_syndic', (0 - _PERIODE_SYNDICATION_HAL) , "MINUTE") . ')';
+	$where = "NOT(" . sql_date_proche('date_syndic', (0 - _PERIODE_SYNDICATION_HAL) , "MINUTE") . ' AND statut="publie")';
 	$id_hal = sql_getfetsel("id_hal", "spip_hals", $where, '', "date_syndic", "1");
 	if ($id_hal) {
 		// inserer la tache dans la file, avec controle d'unicite
@@ -49,7 +49,7 @@ function hal_a_jour($now_id_hal) {
 	
 	$row = sql_fetsel("*", "spip_hals", "id_hal=".intval($now_id_hal));
 
-	if (!$row) return false;
+	if (!$row) return 0;
 	
 	$url_syndic = $row['url_syndic'];
 	if ($row['moderation'] == 'oui')
@@ -63,17 +63,18 @@ function hal_a_jour($now_id_hal) {
 	$url_syndic = parametre_url($url_syndic,'fl','*','&');
 
 	$json = recuperer_page($url_syndic, true);
-
 	if (!$json)
 		$publications = _T('hal:avis_echec_recuperation');
 	else
 		$publications = analyser_publications($json, $url_syndic);
 
 	// Renvoyer l'erreur le cas echeant
-	if (!is_array($publications)) return false;
+	if (!is_array($publications)){
+		sql_updateq('spip_hals',array('date_syndic' => date('Y-m-d H:i:s')),'id_hal='.intval($now_id_hal));
+		return 0;
+	} 
 
 	// Les enregistrer dans la base
-
 	$faits = array();
 	foreach ($publications as $data) {
 		inserer_publication_hal($data, $now_id_hal, $moderation, $url_syndic, $faits);
