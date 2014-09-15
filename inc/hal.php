@@ -12,6 +12,7 @@ function analyser_publications($json, $url_syndic='') {
 		$publications = array();
 		$count = 0;
 		foreach($json['response']['docs'] as $id => $contenu_publication){
+			spip_log($contenu_publication,'test.'._LOG_ERREUR);
 			$count++;
 			$infos_publication = array();
 			$affiche = false;
@@ -28,6 +29,7 @@ function analyser_publications($json, $url_syndic='') {
 						'page_s' => 'page',
 						'docType_s' => 'typdoc',
 						'publisher_s' => 'editeur',
+						'writingDate_s' => 'date_ecriture',
 						'submittedDate_s' => 'date_soumission',
 						'producedDate_s' => 'date_production',
 						'modifiedDate_s' => 'date_modif',
@@ -47,6 +49,7 @@ function analyser_publications($json, $url_syndic='') {
 							$infos_publication[$base] = implode(', ',$contenu_publication[$champ]);
 							break;
 						case 'producedDate_s':
+						case 'writingDate_s':
 							if(strlen($contenu_publication[$champ]) == 4 && preg_match('/\d{4}/',$contenu_publication[$champ])){
 								$infos_publication[$base] = $contenu_publication[$champ].'-01-01 00:00:00';
 								$infos_publication['date_production_format'] = 'annee';
@@ -108,6 +111,7 @@ function analyser_publications($json, $url_syndic='') {
 					}
 				}
 			}
+			spip_log($infos_publication,'test.'._LOG_ERREUR);
 			/**
 			 * On conserve l'ensemble des infos du document au cas où quand même
 			 */

@@ -107,6 +107,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"soustitre"	=> "text DEFAULT '' NOT NULL",
 			"identifiant" => "text DEFAULT '' NOT NULL",
 			"typdoc" => "text DEFAULT '' NOT NULL",
+			"date_ecriture" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"date_soumission" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"date_modif" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"date_production" => "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",

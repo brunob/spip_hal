@@ -1,49 +1,61 @@
 <BOUCLE_afficher_contenu(HALS_PUBLICATIONS){id_hals_publication=#ENV{id}}{statut?}>
 <div class="champ contenu_typdoc[ (#TYPDOC*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_typdoc:></div>
-<div dir='#LANG_DIR' class='#EDIT{typdoc} typdoc'>#TYPDOC</div>
+	<div class='label'><:hals_publication:info_typdoc:></div>
+	<div dir='#LANG_DIR' class='#EDIT{typdoc} typdoc'>#TYPDOC</div>
 </div>
+
 <div class="champ contenu_descriptif[ (#DESCRIPTIF*|strlen|?{'',vide})]">
-<div class='label'><:info_descriptif:></div>
-<div dir='#LANG_DIR' class='#EDIT{descriptif} citation_reference'>[(#DESCRIPTIF)]</div>
+	<div class='label'><:info_descriptif:></div>
+	<div dir='#LANG_DIR' class='#EDIT{descriptif} citation_reference'>[(#DESCRIPTIF)]</div>
 </div>
 
 <div class="champ contenu_descriptif[ (#CITATION_REFERENCE*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_citation_reference:></div>
-<div dir='#LANG_DIR' class='#EDIT{citation_reference} citation_reference'>[(#CITATION_REFERENCE)]</div>
+	<div class='label'><:hals_publication:info_citation_reference:></div>
+	<div dir='#LANG_DIR' class='#EDIT{citation_reference} citation_reference'>[(#CITATION_REFERENCE)]</div>
 </div>
 
 <div class="champ contenu_descriptif[ (#CITATION_COMPLETE*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_citation_complete:></div>
-<div dir='#LANG_DIR' class='#EDIT{citation_complete} citation_complete'>[(#CITATION_COMPLETE)]</div>
+	<div class='label'><:hals_publication:info_citation_complete:></div>
+	<div dir='#LANG_DIR' class='#EDIT{citation_complete} citation_complete'>[(#CITATION_COMPLETE)]</div>
 </div>
 
 <div class="champ contenu_identifiant[ (#IDENTIFIANT*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_identifiant:></div>
-<div dir='#LANG_DIR' class='#EDIT{identifiant} identifiant'><a href="#URL_PUBLICATION">#IDENTIFIANT</a></div>
+	<div class='label'><:hals_publication:info_identifiant:></div>
+	<div dir='#LANG_DIR' class='#EDIT{identifiant} identifiant'><a href="#URL_PUBLICATION">#IDENTIFIANT</a></div>
 </div>
+
 <div class="champ contenu_revue[ (#REVUE*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_revue:></div>
-<div dir='#LANG_DIR' class='#EDIT{revue} revue'>#REVUE</div>
+	<div class='label'><:hals_publication:info_revue:></div>
+	<div dir='#LANG_DIR' class='#EDIT{revue} revue'>#REVUE</div>
 </div>
+
 [<div class="champ contenu_issue[ (#ISSUE*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_issue:></div>
-<div dir='#LANG_DIR' class='#EDIT{issue} issue'>(#ISSUE)</div>
+	<div class='label'><:hals_publication:info_issue:></div>
+	<div dir='#LANG_DIR' class='#EDIT{issue} issue'>(#ISSUE)</div>
 </div>]
+
 [<div class="champ contenu_date_revue[ (#DATE_REVUE*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_date_revue:></div>
-<div dir='#LANG_DIR' class='#EDIT{date_revue} date_revue'>(#DATE_REVUE|!={0000-00-00 00:00:00}|oui)#DATE_REVUE</div>
+	<div class='label'><:hals_publication:info_date_revue:></div>
+	<div dir='#LANG_DIR' class='#EDIT{date_revue} date_revue'>(#DATE_REVUE|!={0000-00-00 00:00:00}|oui)#DATE_REVUE</div>
 </div>]
+
 <div class="champ contenu_page[ (#PAGE*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_page:></div>
-<div dir='#LANG_DIR' class='#EDIT{page} page'>#PAGE</div>
+	<div class='label'><:hals_publication:info_page:></div>
+	<div dir='#LANG_DIR' class='#EDIT{page} page'>#PAGE</div>
 </div>
+
 <div class="champ contenu_editeur[ (#EDITEUR*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_editeur:></div>
-<div dir='#LANG_DIR' class='#EDIT{editeur} editeur'>#EDITEUR</div>
+	<div class='label'><:hals_publication:info_editeur:></div>
+	<div dir='#LANG_DIR' class='#EDIT{editeur} editeur'>#EDITEUR</div>
 </div>
-<div class="champ contenu_editeur[ (#LESAUTEURS*|strlen|?{'',vide})]">
-<div class='label'><:hals_publication:info_lesauteurs:></div>
-<div dir='#LANG_DIR' class='#EDIT{lesauteurs} lesauteurs'>#LESAUTEURS</div>
+
+<div class="champ contenu_lesauteurs[ (#LESAUTEURS*|strlen|?{'',vide})]">
+	<div class='label'><:hals_publication:info_lesauteurs:></div>
+	<div dir='#LANG_DIR' class='#EDIT{lesauteurs} lesauteurs'>#LESAUTEURS</div>
+</div>
+
+<div class="champ contenu_commentaire[ (#COMMENTAIRE*|strlen|?{'',vide})]">
+	<div class='label'><:hals_publication:info_commentaire:></div>
+	<div dir='#LANG_DIR' class='#EDIT{commentaire} commentaire'>#COMMENTAIRE</div>
 </div>
 </BOUCLE_afficher_contenu>
