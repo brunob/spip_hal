@@ -179,6 +179,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'soustitre' => $data['soustitre'],
 			'identifiant' => $data['identifiant'],
 			'typdoc' => $data['typdoc'],
+			'date_ecriture' => $data['date_ecriture'],
 			'date_soumission' => $data['date_soumission'],
 			'date_production' => $data['date_production'],
 			'date_production_format' => $data['date_production_format'],
@@ -194,6 +195,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'isbn' => $data['isbn'],
 			//'format' => $data['format'],
 			'hal_complet' => $data['hal_complet'],
+			'editeur' => $data['editeur'],
 			'lang'=> substr($data['lang'],0,10));
 
 	sql_updateq('spip_hals_publications', $vals, "id_hals_publication=".intval($id_hals_publication));
