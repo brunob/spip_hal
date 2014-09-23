@@ -2,6 +2,8 @@
 
 if (!defined("_ECRIRE_INC_VERSION")) return;
 
+define("_SPIP_HAL_API_ROWS", "100");
+
 function action_editer_hal_dist($arg=null) {
 
 	if (is_null($arg)){
@@ -84,7 +86,7 @@ function hal_modifier($id_hal, $set=false) {
 		$q .= 'authId_i:'.$c['authid'];
 	
 	$hal_api = parametre_url($hal_api,'q',$q);
-	$hal_api = parametre_url(parametre_url($hal_api,'sort','modifiedDate_s desc'),'rows','100');
+	$hal_api = parametre_url($hal_api,'sort','modifiedDate_s desc');
 
 	$c['url_syndic'] = $hal_api;
 	

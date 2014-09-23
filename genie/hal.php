@@ -61,6 +61,7 @@ function hal_a_jour($now_id_hal) {
 	include_spip('inc/distant');
 
 	$url_syndic = parametre_url($url_syndic,'fl','*','&');
+	$url_syndic = parametre_url($url_syndic,'rows',_SPIP_HAL_API_ROWS,'&');
 
 	$json = recuperer_page($url_syndic, true);
 	if (!$json)
