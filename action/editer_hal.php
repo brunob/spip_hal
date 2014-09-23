@@ -84,7 +84,9 @@ function hal_modifier($id_hal, $set=false) {
 		$q .= 'authId_i:'.$c['authid'];
 	
 	$hal_api = parametre_url($hal_api,'q',$q);
-	$hal_api = parametre_url(parametre_url($hal_api,'sort','modifiedDate_s desc'),'rows','100');
+	if(!function_exists('lire_config'))
+		include_spip('inc/config');
+	$hal_api = parametre_url(parametre_url($hal_api,'sort','modifiedDate_s desc'),'rows',lire_config('hal/nb_publication','100'));
 
 	$c['url_syndic'] = $hal_api;
 	
