@@ -13,7 +13,6 @@ function action_update_publications_dist($id_hal=null) {
 	$id_job = job_queue_add('hal_a_jour','hal_a_jour',array($id_hal),'genie/hal',true);
 	// l'executer immediatement si possible
 	if ($id_job) {
-		spip_log($id_job,'test.'._LOG_ERREUR);
 		include_spip('inc/queue');
 		queue_schedule(array($id_job));
 	}
