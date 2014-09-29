@@ -12,6 +12,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 
 	// E
 	'explication_authid' => 'Identifiant numérique unique d\'un auteur sur HAL',
+	'explication_limite' => 'Nombre maximal de publication à récupérer à chaque appel.',
 	'explication_nombre_publication' => 'Nombre maximal de publications rapatriées à chaque appel de l\'API.',
 
 	// I
@@ -31,6 +32,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	// L
 	'label_authid' => 'Identifiant numérique d\'un auteur',
 	'label_descriptif_depot' => 'Descriptif du dépôt',
+	'label_limite' => 'Limite de récupération',
 	'label_nombre_publication' => 'Nombre de publication par appel',
 	'label_titre_depot' => 'Titre du dépôt',
 	'lien_mise_a_jour_publications' => 'Mettre à jour les publications',

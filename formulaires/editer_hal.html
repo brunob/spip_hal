@@ -22,6 +22,13 @@
 					<p class="explication"><:hal:explication_authid:></p>
 					<input type="text" name="authid" id="champ_authid" class='text' value="[(#ENV{authid})]" />
 				</li>
+				[(#VAL{_SPIP_HAL_ROWS}|defined|non)
+				<li class="editer editer_limite[ (#ENV**{erreurs}|table_valeur{limite}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{limite})</span>]
+					<label for="champ_limite"><:hal:label_limite:></label>
+					<p class="explication"><:hal:explication_limite:></p>
+					<input type="text" name="limite" id="champ_limite" class='text' value="[(#ENV{limite}|>{0}|?{#ENV{limite},''})]" placeholder="#CONFIG{hal/nb_publication,100}" />
+				</li>]
 			</ul>
 			[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 			<!--extra-->

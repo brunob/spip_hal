@@ -86,7 +86,7 @@ function hal_modifier($id_hal, $set=false) {
 	$hal_api = parametre_url($hal_api,'q',$q);
 	if(!function_exists('lire_config'))
 		include_spip('inc/config');
-	$hal_api = parametre_url(parametre_url($hal_api,'sort','modifiedDate_s desc'),'rows',(defined('_SPIP_HAL_ROWS') ? _SPIP_HAL_ROWS : lire_config('hal/nb_publication','100')));
+	$hal_api = parametre_url($hal_api,'sort','modifiedDate_s desc');
 
 	$c['url_syndic'] = $hal_api;
 	
