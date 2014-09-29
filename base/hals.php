@@ -60,9 +60,10 @@ function hal_declarer_tables_objets_sql($tables){
 			"date_index"	=> "datetime DEFAULT '0000-00-00 00:00:00' NOT NULL",
 			"moderation"	=> "VARCHAR(3) DEFAULT 'non'",
 			"miroir"	=> "VARCHAR(3) DEFAULT 'non'",
+			"limite"	=> "bigint(21) NOT NULL",
 			"oubli"	=> "VARCHAR(3) DEFAULT 'non'"
 		),
-		'champs_editables' => array('titre', 'authid', 'descriptif'),
+		'champs_editables' => array('titre', 'authid', 'descriptif','limite'),
 		'key' => array(
 			"PRIMARY KEY"	=> "id_hal",
 			"KEY statut"	=> "statut, date_syndic",
@@ -83,7 +84,7 @@ function hal_declarer_tables_objets_sql($tables){
 		'rechercher_champs' => array(
 			'titre' => 5,'authid' => 5, 'structid'=>5, 'descriptif' => 3
 		),
-		'champs_versionnes' => array('titre', 'descriptif','authid','structid'),
+		'champs_versionnes' => array('titre','descriptif','authid','structid','limite'),
 	);
 
 	$tables['spip_hals_publications'] = array(
