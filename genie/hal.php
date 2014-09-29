@@ -59,8 +59,11 @@ function hal_a_jour($now_id_hal) {
 
 	// Aller chercher les donnees du JSON et les analyser
 	include_spip('inc/distant');
+	include_spip('inc/config');
 
-	$url_syndic = parametre_url($url_syndic,'fl','*','&');
+	$limite = ($row['limite'] > 0) ? $row['limite'] : (defined('_SPIP_HAL_ROWS') ? _SPIP_HAL_ROWS : lire_config('hal/nb_publication','100'));
+		
+	$url_syndic = parametre_url(parametre_url($url_syndic,'rows',$limite,'&'),'fl','*','&');
 
 	$json = recuperer_page($url_syndic, true);
 	if (!$json)
