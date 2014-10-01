@@ -98,11 +98,12 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	// On coupe a 255 caracteres pour eviter tout doublon
 	// sur une URL de plus de 255 qui exloserait la base de donnees
 	$le_lien = substr($data['url_publication'], 0,255);
+	$docid = $data['docid'];
 
 	// si true, un lien deja syndique arrivant par une autre source est ignore
 	// par defaut [false], chaque source a sa liste de liens, eventuellement
 	// les memes
-	define('_HAL_SYNDICATION_URL_UNIQUE', false);
+	define('_HAL_SYNDICATION_URL_UNIQUE', true);
 
 	// Si false, on ne met pas a jour un lien deja syndique avec ses nouvelles
 	// donnees ; par defaut [true] : on met a jour si le contenu a change
@@ -114,8 +115,8 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	// S'il y a plusieurs liens qui repondent, il faut choisir le plus proche
 	// (ie meme titre et pas deja fait), le mettre a jour et ignorer les autres
 	$n = 0;
-	$s = sql_select("id_hals_publication,titre,id_hal,statut", "spip_hals_publications",
-		"url_publication=" . sql_quote($le_lien)
+	$s = sql_select("id_hals_publication,docid,titre,id_hal,statut", "spip_hals_publications",
+		"docid=" . sql_quote($docid)
 		. (_SYNDICATION_URL_UNIQUE
 			? ''
 			: " AND id_hal=".intval($now_id_hal))
@@ -138,6 +139,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 		$champs = array(
 			'id_hal' => $now_id_hal,
 			'url_publication' => $le_lien,
+			'docid' => $docid,
 			'date' => date("Y-m-d H:i:s"),
 			'statut'  => $statut
 		);
