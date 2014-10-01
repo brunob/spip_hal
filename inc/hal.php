@@ -90,7 +90,8 @@ function analyser_publications($json, $url_syndic='') {
 								else{
 									$infos_publication[$base] = "<multi>";
 									foreach($contenu_publication[$champ] as $key => $content){
-										$infos_publication[$base] .= "[".$contenu_publication['language_s'][$key]."]".$content;
+										if(isset($contenu_publication['language_s'][$key]))
+											$infos_publication[$base] .= "[".$contenu_publication['language_s'][$key]."]".$content;
 									}
 									$infos_publication[$base] .= "</multi>";
 								}
