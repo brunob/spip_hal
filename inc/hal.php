@@ -12,7 +12,6 @@ function analyser_publications($json, $url_syndic='') {
 		$publications = array();
 		$count = 0;
 		foreach($json['response']['docs'] as $id => $contenu_publication){
-			spip_log($contenu_publication,'test.'._LOG_ERREUR);
 			$count++;
 			$infos_publication = array();
 			$affiche = false;
@@ -112,7 +111,6 @@ function analyser_publications($json, $url_syndic='') {
 					}
 				}
 			}
-			spip_log($infos_publication,'test.'._LOG_ERREUR);
 			/**
 			 * On conserve l'ensemble des infos du document au cas où quand même
 			 */
