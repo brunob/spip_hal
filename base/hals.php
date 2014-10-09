@@ -17,6 +17,7 @@ function hal_declarer_tables_interfaces($interfaces){
 	$interfaces['table_des_traitements']['TYPDOC'][] = 'typo(typdoc_propre(%s))';
 	$interfaces['table_des_traitements']['CITATION_REFERENCE'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['CITATION_COMPLETE'][] = 'propre(%s)';
+	$interfaces['table_des_traitements']['COMMENTAIRE'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['DESCRIPTIF'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['EDITEUR'][] = 'typo(%s)';
 
