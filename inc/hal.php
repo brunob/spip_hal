@@ -39,6 +39,7 @@ function analyser_publications($json, $url_syndic='') {
 						'journalTitle_s' => 'revue',
 						'journalId_i' => 'revue_id',
 						'journalDate_s' => 'date_revue',
+						'abstract_s' => 'resume',
 						'comment_s' => 'commentaire',
 						'issue_s' => 'issue');
 			foreach($champs as $champ => $base){

@@ -33,6 +33,10 @@ function hal_upgrade($nom_meta_base_version,$version_cible){
 		array('maj_tables',array('spip_hals')),
 		array('upgrade_hal_limites')
 	);
+	$maj['0.1.7'] = array(
+		array('maj_tables',array('spip_hals_publications')),
+		array('upgrade_hal_resume')
+	);
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
@@ -56,6 +60,16 @@ function upgrade_hal_limites(){
 	foreach ($hals as $hal) {
 		$url_syndic = parametre_url($hal['url_syndic'],'rows','');
 		sql_updateq('spip_hals',array('url_syndic' => $url_syndic),'id_hal='.intval($hal['id_hal']));
+	}
+}
+
+function upgrade_hal_resume(){
+	$hals = sql_allfetsel('id_hals_publication,hal_complet','spip_hals_publications');
+	foreach ($hals as $hal) {
+		$hals_content = unserialize($hal['hal_complet']);
+		if(isset($hals_content['abstract_s']) && is_array($hals_content['abstract_s'])){
+			sql_updateq('spip_hals_publications',array('resume' => $hals_content['abstract_s'][0]),'id_hals_publication='.intval($hal['id_hals_publication']));
+		}
 	}
 }
 ?>

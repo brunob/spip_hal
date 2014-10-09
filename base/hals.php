@@ -130,6 +130,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"livre" => "text DEFAULT '' NOT NULL",
 			"revue" => "text DEFAULT '' NOT NULL",
 			"revue_id" => "bigint(21) DEFAULT '0' NOT NULL",
+			"resume" => "text DEFAULT '' NOT NULL",
 			"commentaire" => "text DEFAULT '' NOT NULL",
 			"isbn" => "text DEFAULT '' NOT NULL",
 			"lang"	=> "VARCHAR(10) DEFAULT '' NOT NULL",
