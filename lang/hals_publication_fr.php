@@ -26,6 +26,11 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	
 	//
 	'label_descriptif_publication' => 'Descriptif de la publication',
+	'label_editeur' => 'Éditeur :',
+	'label_page' => 'Pages :',
+	'label_citation_reference' => 'Citation de référence :',
+	'label_resume' => 'Résumé :',
+	'label_commentaire' => 'Commentaire :',
 
 	// T
 	'titre_logo_hals_publication' => 'Logo de la publication',
