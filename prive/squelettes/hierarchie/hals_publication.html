@@ -1,0 +1,10 @@
+<!-- hierarchie -->
+<BOUCLE_hals_publication(HALS_PUBLICATIONS){id_hals_publication}{tout}>
+<BOUCLE_hal(HALS){id_hal}{tout}>
+[<a
+				href="(#ID_HAL|generer_url_entite{hal})">#TITRE</a> &gt;]
+</BOUCLE_hal>
+[(#LANG|changer_typo)]
+	<strong class="on">[(#TITRE|couper{80}|sinon{<:ecrire:info_sans_titre:>})]</strong>
+[(#REM|changer_typo)]
+</BOUCLE_hals_publication>
