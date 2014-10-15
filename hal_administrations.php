@@ -37,6 +37,9 @@ function hal_upgrade($nom_meta_base_version,$version_cible){
 		array('maj_tables',array('spip_hals_publications')),
 		array('upgrade_hal_resume')
 	);
+	$maj['0.1.8'] = array(
+		array('upgrade_hal_api')
+	);
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
 }
@@ -69,6 +72,18 @@ function upgrade_hal_resume(){
 		$hals_content = unserialize($hal['hal_complet']);
 		if(isset($hals_content['abstract_s']) && is_array($hals_content['abstract_s'])){
 			sql_updateq('spip_hals_publications',array('resume' => $hals_content['abstract_s'][0]),'id_hals_publication='.intval($hal['id_hals_publication']));
+		}
+	}
+}
+
+function upgrade_hal_api(){
+	$hals = sql_allfetsel('id_hal,url_syndic','spip_hals');
+	$ajout_syndic = charger_fonction('update_publications','action');
+	foreach ($hals as $hal) {
+		$new_api = str_replace('api-preprod.archives-ouvertes.fr','api.archives-ouvertes.fr',$hal['url_syndic']);
+		if($new_api != $hal['url_syndic']){
+			sql_updateq('spip_hals',array('url_syndic' => $new_api),'id_hal='.intval($hal['id_hal']));
+			$ajout_syndic($hal['id_hal']);
 		}
 	}
 }
