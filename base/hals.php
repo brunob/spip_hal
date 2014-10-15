@@ -17,6 +17,7 @@ function hal_declarer_tables_interfaces($interfaces){
 	$interfaces['table_des_traitements']['TYPDOC'][] = 'typo(typdoc_propre(%s))';
 	$interfaces['table_des_traitements']['CITATION_REFERENCE'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['CITATION_COMPLETE'][] = 'propre(%s)';
+	$interfaces['table_des_traitements']['RESUME'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['COMMENTAIRE'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['DESCRIPTIF'][] = 'propre(%s)';
 	$interfaces['table_des_traitements']['EDITEUR'][] = 'typo(%s)';
@@ -162,7 +163,7 @@ function hal_declarer_tables_objets_sql($tables){
 		'url_voir' => 'hals_publication',
 		'url_edit' => 'hals_publication_edit',
 		'editable' => 'oui',
-		'champs_editables' => array('descriptif','titre'),
+		'champs_editables' => array('titre','descriptif','soustitre','resume','commentaire','editeur','page','citation_reference'),
 		'rechercher_champs' => array(
 				'titre' => 5, 'soustitre' => 3, 'descriptif' => 3, 'citation_reference' => 3, 'citation_complete' => 3, 'livre' => 2,'revue' => 2,'editeur' => 1
 		)
