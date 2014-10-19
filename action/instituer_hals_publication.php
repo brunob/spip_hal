@@ -11,7 +11,7 @@ function action_instituer_hals_publication_dist() {
 	list($id_hals_publication, $statut) = preg_split('/\W/', $arg);
 
 	if ($id_hals_publication = intval($id_hals_publication)
-	  AND $id_hal = sql_getfetsel('id_hal','spip_hals_publications',"id_hals_publication=".intval($id_hals_publication))
+		AND $id_hal = sql_getfetsel('id_hal','spip_hals_publications',"id_hals_publication=".intval($id_hals_publication))
 		AND autoriser('moderer','hal',$id_hal)) {
 		sql_updateq("spip_hals_publications", array("statut" => $statut), "id_hals_publication=".intval($id_hals_publication));
 	}
