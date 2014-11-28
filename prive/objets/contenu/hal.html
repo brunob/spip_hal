@@ -7,10 +7,14 @@
 <div class='label'><:info_notes:></div>
 <div dir='#LANG_DIR' class='#EDIT{notes} notes'>(#NOTES)</div>
 </div>]
-<div class="champ contenu_authid[ (#AUTHID*|strlen|?{'',vide})]">
+[(#AUTHID*|!={0}|oui) <div class="champ contenu_authid[ (#AUTHID*|strlen|?{'',vide})]">
 <div class='label'><:hal:info_authid:></div>
 <div dir='#LANG_DIR' class='#EDIT{authid} authid'>#AUTHID</div>
-</div>
+</div>]
+[(#IDHAL*|!={''}|oui) <div class="champ contenu_idhal[ (#IDHAL*|strlen|?{'',vide})]">
+<div class='label'><:hal:info_idhal:></div>
+<div dir='#LANG_DIR' class='#EDIT{idhal} idhal'>#IDHAL</div>
+</div>]
 <div class="champ contenu_url_syndic[ (#URL_SYNDIC*|strlen|?{'',vide})]">
 <div class='label'><:hal:info_url_syndic:></div>
 <div dir='#LANG_DIR' class='#EDIT{url_syndic} url_syndic'>#URL_SYNDIC</div>

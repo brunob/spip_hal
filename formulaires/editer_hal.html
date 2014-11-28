@@ -16,11 +16,11 @@
 					<label for="champ_descriptif"><:hal:label_descriptif_depot:></label>
 					<textarea name='descriptif' id='champ_descriptif' rows='4' cols='40'>[(#ENV**{descriptif})]</textarea>
 				</li>
-				<li class="editer editer_authid[ (#ENV**{erreurs}|table_valeur{authid}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{authid})</span>]
-					<label for="champ_authid"><:hal:label_authid:></label>
-					<p class="explication"><:hal:explication_authid:></p>
-					<input type="text" name="authid" id="champ_authid" class='text' value="[(#ENV{authid})]" />
+				<li class="editer editer_halid[ (#ENV**{erreurs}|table_valeur{halid}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{halid})</span>]
+					<label for="champ_halid"><:hal:label_halid:></label>
+					<p class="explication"><:hal:explication_halid:></p>
+					<input type="text" name="halid" id="champ_halid" class='text' value="[(#ENV{halid})]" />
 				</li>
 				[(#VAL{_SPIP_HAL_ROWS}|defined|non)
 				<li class="editer editer_limite[ (#ENV**{erreurs}|table_valeur{limite}|oui)erreur]">
