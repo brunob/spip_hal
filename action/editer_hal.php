@@ -80,9 +80,12 @@ function hal_modifier($id_hal, $set=false) {
 
 	$q = '';
 	$hal_api = "http://api.archives-ouvertes.fr/search/";
-	if(isset($c['authid']))
-		$q .= 'authId_i:'.$c['authid'];
-	
+	if(isset($c['authid']) && $c['authid']>0) {
+            $q .= 'authId_i:'.$c['authid'];
+        }
+	if(isset($c['idhal']) && $c['idhal']!='') {
+            $q .= 'authIdHal_s:'.$c['idhal'];
+        }
 	$hal_api = parametre_url($hal_api,'q',$q);
 	if(!function_exists('lire_config'))
 		include_spip('inc/config');
