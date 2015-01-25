@@ -163,7 +163,7 @@ function hal_declarer_tables_objets_sql($tables){
 		'url_voir' => 'hals_publication',
 		'url_edit' => 'hals_publication_edit',
 		'editable' => 'oui',
-		'champs_editables' => array('titre','descriptif','soustitre','resume','commentaire','editeur','page','citation_reference'),
+		'champs_editables' => array('titre','descriptif','soustitre','resume','commentaire','editeur','page','citation_reference','date_production'),
 		'rechercher_champs' => array(
 				'titre' => 5, 'soustitre' => 3, 'descriptif' => 3, 'citation_reference' => 3, 'citation_complete' => 3, 'livre' => 2,'revue' => 2,'editeur' => 1
 		)
