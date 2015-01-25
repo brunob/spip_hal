@@ -117,7 +117,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	$n = 0;
 	$s = sql_select("id_hals_publication,docid,titre,id_hal,statut", "spip_hals_publications",
 		"docid=" . sql_quote($docid)
-		. (_SYNDICATION_URL_UNIQUE
+		. (_HAL_SYNDICATION_URL_UNIQUE
 			? ''
 			: " AND id_hal=".intval($now_id_hal))
 		." AND " . sql_in('id_hals_publication', $faits, 'NOT'), "", "maj DESC");

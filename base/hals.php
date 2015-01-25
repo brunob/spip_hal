@@ -33,7 +33,7 @@ function hal_declarer_tables_interfaces($interfaces){
  * 	La description des objets SPIP
  * @return array
  * 	La description des objets SPIP complétée
- */
+ */
 function hal_declarer_tables_objets_sql($tables){
 	$tables['spip_hals'] = array(
 		'type'=>'hal',
@@ -49,8 +49,9 @@ function hal_declarer_tables_objets_sql($tables){
 		'principale' => 'oui',
 		'icone_objet' => 'hal',
 		'field'=> array(
-			"id_hal"	=> "bigint(21) NOT NULL",
+			"id_hal" => "bigint(21) NOT NULL",
 			"authid" => "bigint(21) NOT NULL",
+			"idhal" => "varchar(200) NOT NULL",
 			"structid" => "bigint(21) NOT NULL",
 			"titre"	=> "text DEFAULT '' NOT NULL",
 			"url_syndic"	=> "text DEFAULT '' NOT NULL",
@@ -65,7 +66,7 @@ function hal_declarer_tables_objets_sql($tables){
 			"limite"	=> "bigint(21) NOT NULL",
 			"oubli"	=> "VARCHAR(3) DEFAULT 'non'"
 		),
-		'champs_editables' => array('titre', 'authid', 'descriptif','limite'),
+		'champs_editables' => array('titre', 'authid', 'idhal', 'descriptif','limite'),
 		'key' => array(
 			"PRIMARY KEY"	=> "id_hal",
 			"KEY statut"	=> "statut, date_syndic",
