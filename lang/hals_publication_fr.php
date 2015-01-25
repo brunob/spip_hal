@@ -29,6 +29,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'label_editeur' => 'Éditeur :',
 	'label_page' => 'Pages :',
 	'label_citation_reference' => 'Citation de référence :',
+	'label_date_production' => 'Date de production :',
 	'label_resume' => 'Résumé :',
 	'label_commentaire' => 'Commentaire :',
 

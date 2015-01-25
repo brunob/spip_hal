@@ -21,6 +21,12 @@
 					<label for="champ_editeur"><:hals_publication:label_editeur:></label>
 					<input type="text" name='editeur' class="text" id='champ_editeur' value="#ENV**{editeur}" />
 				</li>
+				<li class="editer editer_date_production[ (#ENV**{erreurs}|table_valeur{date_production}|oui)erreur]">
+					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{date_production})</span>]
+					<label for="champ_page"><:hals_publication:label_date_production:></label>
+					<input type="text" class="text date" name="date_production" id="date_production" size="10" maxlength="10" value="[(#ENV**{date_production})]">
+					<input type="hidden" class="hidden heure" name="heure_production" id="heure_production" size="10" maxlength="10" value="[(#ENV**{heure_production})]">
+				</li>
 				<li class="editer editer_page[ (#ENV**{erreurs}|table_valeur{page}|oui)erreur]">
 					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{page})</span>]
 					<label for="champ_page"><:hals_publication:label_page:></label>
@@ -47,6 +53,7 @@
 					<textarea name='descriptif' id='champ_descriptif' rows='4' cols='40'>[(#ENV**{descriptif})]</textarea>
 				</li>
 			</ul>
+			[(#INCLURE{fond=formulaires/dateur/inc-dateur})]
 			[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 			<!--extra-->
 			<p class="boutons"><input type='submit' class='submit' value='<:bouton_enregistrer:>' /></p>
