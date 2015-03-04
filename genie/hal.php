@@ -47,7 +47,7 @@ function hal_a_jour($now_id_hal) {
 	if ($call[1]['function']!=='queue_start_job')
 		spip_log("hal_a_jour doit etre appelee par JobQueue Cf. http://trac.rezo.net/trac/spip/changeset/10294",_LOG_ERREUR);
 	
-	$row = sql_fetsel("*", "spip_hals", "id_hal=".intval($now_id_hal));
+	$row = sql_fetsel("*", "spip_hals", "id_hal=".intval($now_id_hal).' AND statut = "publie"');
 
 	if (!$row) return 0;
 	
@@ -130,7 +130,6 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 		}
 		$n++;
 	}
-
 	// S'il y en avait qu'un, le prendre quel que soit le titre
 	if ($n == 1)
 		$id_hals_publication = $id;
