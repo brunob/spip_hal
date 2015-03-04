@@ -76,7 +76,7 @@ function hal_declarer_tables_objets_sql($tables){
 		),
 		
 		'statut' => array(
-			 array('champ'=>'statut','publie'=>'publie','previsu'=>'publie,prop','exception'=>'statut')
+			 array('champ'=>'statut','publie'=>'publie','previsu'=>'publie,prop','exception'=>array('statut','tout'))
 		),
 		'texte_changer_statut' => 'hal:info_statut_hal',
 		'statut_textes_instituer' => array(
@@ -151,8 +151,17 @@ function hal_declarer_tables_objets_sql($tables){
 			"id_hal"=>"id_hal"
 		),
 		'statut' => array(
-			array('champ'=>'statut','publie'=>'publie','previsu'=>'publie','exception'=>'statut'),
-			array('champ'=>array(array('spip_hals','id_hal'),'statut'),'publie'=>'publie','previsu'=>'publie,prop','exception'=>'statut'),
+			array(
+				'champ'=>'statut',
+				'publie'=>'publie',
+				'previsu'=>'publie',
+				'exception'=> array('statut','tout')
+			),
+			array(
+				'champ'=>array(array('spip_hals','id_hal'),'statut'),
+				'publie'=>'publie',
+				'previsu'=>'publie,prop',
+				'exception'=>array('statut','tout')),
 		),
 		'statut_images' => array(
 			'publie'=>'puce-publier-8.png','refuse'=>'puce-refuser-8.png'
