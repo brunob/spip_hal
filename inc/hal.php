@@ -47,6 +47,7 @@ function analyser_publications($json, $url_syndic='') {
 			foreach($champs as $champ => $base){
 				if(isset($contenu_publication[$champ]) && (is_array($contenu_publication[$champ]) OR (strlen($contenu_publication[$champ]) > 0))){
 					switch ($champ) {
+						case 'keyword_s':
 						case 'publisher_s':
 							$infos_publication[$base] = implode(', ',$contenu_publication[$champ]);
 							break;
