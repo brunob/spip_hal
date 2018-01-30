@@ -65,7 +65,7 @@ function hal_a_jour($now_id_hal) {
 		
 	$url_syndic = parametre_url(parametre_url($url_syndic,'rows',$limite,'&'),'fl','*','&');
 
-	$json = recuperer_page($url_syndic, true);
+	$json = recuperer_page($url_syndic, true, false, 268435456);
 	if (!$json)
 		$publications = _T('hal:avis_echec_recuperation');
 	else
