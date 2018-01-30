@@ -6,13 +6,13 @@
 <form method="post" action="#SELF">
 	<div>
 		#ACTION_FORMULAIRE{SELF}
-		<ul>
-			<li class="editer editer_nb_publication">
-				<label for="champ_nb_publication"><:hal:label_nombre_publication:></label>
-				<p class="explication"><:hal:explication_nombre_publication:></p>
-				<input type="text" class="text" name="nb_publication" id="nb_publication" maxlength="4" value="#ENV{nb_publication,100}" />
-			</li>
-		</ul>
+		<[(#VAL{ul}|saisie_balise_structure_formulaire)] class="editer-groupe">
+			[(#SAISIE{input,nb_publication,
+				label=<:hal:label_nombre_publication:>,
+				explication=<:hal:explication_nombre_publication:>,
+				maxlength=4,
+				defaut=100})]
+		</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 		<p class="boutons">
 			<input type="submit" class="submit" value="<:bouton_enregistrer:>" />
 		</p>
