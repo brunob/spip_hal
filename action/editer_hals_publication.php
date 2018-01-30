@@ -1,6 +1,6 @@
 <?php
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 /**
  * Modifier une publication HAL
@@ -45,4 +45,3 @@ function hals_publication_modifier($id_hals_publication, $set=false) {
 	return $err;
 }
 
-?>

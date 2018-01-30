@@ -5,54 +5,35 @@
 	<form method='post' action='#ENV{action}'>
 		<div>
 			#ACTION_FORMULAIRE{#ENV{action}}
-			<ul>
-				<li class="editer editer_titre[ (#ENV**{erreurs}|table_valeur{titre}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{titre})</span>]
-					<label for="champ_titre"><:info_titre:></label>
-					<input type="text" name='titre' class="text" id='champ_titre' value="#ENV**{titre}" />
-				</li>
-				<li class="editer editer_soustitre[ (#ENV**{erreurs}|table_valeur{soustitre}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{soustitre})</span>]
-					<label for="champ_soustitre"><:info_sous_titre:></label>
-					<input type="text" name='soustitre' class="text" id='champ_soustitre' value="#ENV**{soustitre}" />
-				</li>
-				<li class="editer editer_editeur[ (#ENV**{erreurs}|table_valeur{editeur}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{editeur})</span>]
-					<label for="champ_editeur"><:hals_publication:label_editeur:></label>
-					<input type="text" name='editeur' class="text" id='champ_editeur' value="#ENV**{editeur}" />
-				</li>
-				<li class="editer editer_date_production[ (#ENV**{erreurs}|table_valeur{date_production}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{date_production})</span>]
-					<label for="champ_page"><:hals_publication:label_date_production:></label>
-					<input type="text" class="text date" name="date_production" id="date_production" size="10" maxlength="10" value="[(#ENV**{date_production})]">
-					<input type="hidden" class="hidden heure" name="heure_production" id="heure_production" size="10" maxlength="10" value="[(#ENV**{heure_production})]">
-				</li>
-				<li class="editer editer_page[ (#ENV**{erreurs}|table_valeur{page}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{page})</span>]
-					<label for="champ_page"><:hals_publication:label_page:></label>
-					<input type="text" name='page' class="text" id='champ_page' value="#ENV**{page}" />
-				</li>
-				<li class="editer editer_citation_reference[ (#ENV**{erreurs}|table_valeur{citation_reference}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{citation_reference})</span>]
-					<label for="champ_citation_reference"><:hals_publication:label_citation_reference:></label>
-					<textarea name='citation_reference' id='champ_citation_reference' rows='4' cols='40'>[(#ENV**{citation_reference})]</textarea>
-				</li>
-				<li class="editer editer_resume[ (#ENV**{erreurs}|table_valeur{resume}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{resume})</span>]
-					<label for="champ_resume"><:hals_publication:label_resume:></label>
-					<textarea name='resume' id='champ_resume' rows='4' cols='40'>[(#ENV**{resume})]</textarea>
-				</li>
-				<li class="editer editer_commentaire[ (#ENV**{erreurs}|table_valeur{commentaire}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{commentaire})</span>]
-					<label for="champ_commentaire"><:hals_publication:label_commentaire:></label>
-					<textarea name='commentaire' id='champ_commentaire' rows='4' cols='40'>[(#ENV**{commentaire})]</textarea>
-				</li>
-				<li class="editer editer_descriptif[ (#ENV**{erreurs}|table_valeur{descriptif}|oui)erreur]">
-					[<span class='erreur_message'>(#ENV**{erreurs}|table_valeur{descriptif})</span>]
-					<label for="champ_descriptif"><:hals_publication:label_descriptif_publication:></label>
-					<textarea name='descriptif' id='champ_descriptif' rows='4' cols='40'>[(#ENV**{descriptif})]</textarea>
-				</li>
-			</ul>
+			<[(#VAL{ul}|saisie_balise_structure_formulaire)] class="editer-groupe">
+				[(#SAISIE{input,titre,
+					label=<:info_titre:>})]
+				[(#SAISIE{input,soustitre,
+					label=<:info_sous_titre:>})]
+				[(#SAISIE{input,editeur,
+					label=<:hals_publication:label_editeur:>})]
+				[(#SAISIE{input,date_production,
+					label=<:hals_publication:label_date_production:>,
+					size=10,
+					maxlength=10})]
+				[(#SAISIE{hidden,heure_production,
+					size=10,
+					maxlength=10})]
+				[(#SAISIE{input,page,
+					label=<:hals_publication:label_page:>})]
+				[(#SAISIE{textarea,citation_reference,
+					label=<:hals_publication:label_citation_reference:>,
+					rows=4})]
+				[(#SAISIE{textarea,resume,
+					label=<:hals_publication:label_resume:>,
+					rows=4})]
+				[(#SAISIE{textarea,commentaire,
+					label=<:hals_publication:label_commentaire:>,
+					rows=4})]
+				[(#SAISIE{textarea,descriptif,
+					label=<:hals_publication:label_descriptif_publication:>,
+					rows=4})]
+			</[(#VAL{ul}|saisie_balise_structure_formulaire)]>
 			[(#INCLURE{fond=formulaires/dateur/inc-dateur})]
 			[(#REM) ajouter les saisies supplementaires : extra et autre, a cet endroit ]
 			<!--extra-->

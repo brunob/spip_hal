@@ -56,4 +56,4 @@ function hal_affiche_milieu($flux){
 	}
 	return $flux;
 }
-?>
+

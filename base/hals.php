@@ -33,7 +33,7 @@ function hal_declarer_tables_interfaces($interfaces){
  * 	La description des objets SPIP
  * @return array
  * 	La description des objets SPIP complétée
- */
+ */
 function hal_declarer_tables_objets_sql($tables){
 	$tables['spip_hals'] = array(
 		'type'=>'hal',
@@ -182,4 +182,4 @@ function hal_declarer_tables_objets_sql($tables){
 	return $tables;
 }
 
-?>
+

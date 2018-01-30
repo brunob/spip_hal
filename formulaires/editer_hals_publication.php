@@ -67,4 +67,4 @@ function formulaires_editer_hals_publication_traiter_dist($id_hals_publication, 
 	return $res;
 }
 
-?>
+

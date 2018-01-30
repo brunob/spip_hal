@@ -26,4 +26,5 @@
 	<menu nom="hals" titre="hal:icone_hals_references" parent="menu_edition" icone="images/hal-16.png" />
 	<menu nom="hal_creer" titre="hal:icone_referencer_nouveau_hal" parent="outils_rapides" icone="images/hal-new-16.png" action="hal_edit" parametres="new=oui" />
 	<necessite nom="sites" />
+	<necessite nom="saisies" />
 </paquet>

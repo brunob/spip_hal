@@ -1,6 +1,6 @@
 <?php
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 // http://doc.spip.org/@action_editer_site_dist
 function action_update_publications_dist($id_hal=null) {
@@ -21,4 +21,3 @@ function action_update_publications_dist($id_hal=null) {
 	}
 }
 
-?>

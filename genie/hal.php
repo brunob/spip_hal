@@ -1,6 +1,6 @@
 <?php
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 ## valeurs modifiables dans mes_options
 ## attention il est tres mal vu de prendre une periode < 20 minutes
@@ -65,7 +65,7 @@ function hal_a_jour($now_id_hal) {
 		
 	$url_syndic = parametre_url(parametre_url($url_syndic,'rows',$limite,'&'),'fl','*','&');
 
-	$json = recuperer_page($url_syndic, true);
+	$json = recuperer_page($url_syndic, true, false, 268435456);
 	if (!$json)
 		$publications = _T('hal:avis_echec_recuperation');
 	else
@@ -222,4 +222,4 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 	return $ajout;
 }
 
-?>
+

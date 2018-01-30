@@ -1,6 +1,6 @@
 <?php
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function action_editer_hal_dist($arg=null) {
 
@@ -121,4 +121,3 @@ function instituer_hal($id_hal, $c){
 	include_spip('action/editer_objet');
 	return objet_instituer('hal',$id_hal, $c);
 }
-?>

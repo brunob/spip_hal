@@ -1,6 +1,6 @@
 <?php
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 function action_instituer_hals_publication_dist() {
 
@@ -18,4 +18,4 @@ function action_instituer_hals_publication_dist() {
 	}
 }
 
-?>
+
