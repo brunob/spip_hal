@@ -20,4 +20,3 @@ function hal_affdate($date,$date_format){
 	return $date;
 }
 
-?>

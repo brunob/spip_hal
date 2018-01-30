@@ -1,6 +1,6 @@
 <?php
 
-if (!defined("_ECRIRE_INC_VERSION")) return;
+if (!defined('_ECRIRE_INC_VERSION')) return;
 
 // prend un json issu de la recherche de HAL et retourne un tableau des documents lus,
 // et false en cas d'erreur
@@ -123,4 +123,3 @@ function analyser_publications($json, $url_syndic='') {
 	return $publications;
 }
 
-?>

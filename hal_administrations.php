@@ -91,4 +91,4 @@ function upgrade_hal_api(){
 		}
 	}
 }
-?>
+

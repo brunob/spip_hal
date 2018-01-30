@@ -61,4 +61,3 @@ function formulaires_editer_hal_traiter_dist($id_hal='new', $retour='', $config_
 	return formulaires_editer_objet_traiter('hal', $id_hal, '', '', $retour, '',$config_fonc,$row,$hidden);
 }
 
-?>

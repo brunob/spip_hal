@@ -52,4 +52,4 @@ function auteur_hals_publication($id_hals_publication,$qui=array()){
 	}
 	return false;
 }
-?>
+
