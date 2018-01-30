@@ -201,6 +201,7 @@ function inserer_publication_hal ($data, $now_id_hal, $statut, $url_syndic, &$fa
 			'hal_complet' => $data['hal_complet'],
 			'editeur' => $data['editeur'],
 			'url_publication' => $data['url_publication'],
+			'tags' => $data['tags'],
 			'lang'=> substr($data['lang'],0,10));
 
 	sql_updateq('spip_hals_publications', $vals, "id_hals_publication=".intval($id_hals_publication));
