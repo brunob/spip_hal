@@ -3,7 +3,7 @@
 	categorie="edition"
 	version="0.4.2"
 	etat="stable"
-	compatibilite="[3.0.0;3.1.*]"
+	compatibilite="[3.0.0;3.2.*]"
 	logo="prive/themes/spip/images/hal-32.png"
 	schema="0.1.9"
 >
