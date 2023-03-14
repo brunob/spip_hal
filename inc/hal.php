@@ -7,6 +7,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 // prend un json issu de la recherche de HAL et retourne un tableau des documents lus,
 // et false en cas d'erreur
 function analyser_publications($json, $url_syndic = '') {
+	$dede = 0;
 	try {
 		$json = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
 	} catch (JsonException $e) {
