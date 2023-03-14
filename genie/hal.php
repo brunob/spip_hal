@@ -73,7 +73,7 @@ function hal_a_jour($now_id_hal) {
 
 	$url_syndic = parametre_url(parametre_url($url_syndic, 'rows', $limite, '&'), 'fl', '*', '&');
 
-	$json = recuperer_page($url_syndic, true, false, 268435456);
+	$json = recuperer_page($url_syndic, true, false, 268_435_456);
 	if (!$json) {
 		$publications = _T('hal:avis_echec_recuperation');
 	} else {
@@ -103,7 +103,9 @@ function hal_a_jour($now_id_hal) {
 // un autre item du meme feed qui aurait le meme link
 //
 function inserer_publication_hal($data, $now_id_hal, $statut, $url_syndic, &$faits) {
-	// Creer le lien s'il est nouveau - cle=(id_hal,url)
+	$ajout = null;
+	$id_hal = null;
+ // Creer le lien s'il est nouveau - cle=(id_hal,url)
 	// On coupe a 255 caracteres pour eviter tout doublon
 	// sur une URL de plus de 255 qui exloserait la base de donnees
 	$le_lien = substr($data['url_publication'], 0, 255);

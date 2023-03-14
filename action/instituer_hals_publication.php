@@ -9,7 +9,7 @@ function action_instituer_hals_publication_dist() {
 	$securiser_action = charger_fonction('securiser_action', 'inc');
 	$arg = $securiser_action();
 
-	list($id_hals_publication, $statut) = preg_split('/\W/', $arg);
+	[$id_hals_publication, $statut] = preg_split('/\W/', $arg);
 
 	if (
 		$id_hals_publication = intval($id_hals_publication)

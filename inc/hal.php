@@ -7,7 +7,12 @@ if (!defined('_ECRIRE_INC_VERSION')) {
 // prend un json issu de la recherche de HAL et retourne un tableau des documents lus,
 // et false en cas d'erreur
 function analyser_publications($json, $url_syndic = '') {
-	$json = json_decode($json, true);
+	try {
+		$json = json_decode($json, true, 512, JSON_THROW_ON_ERROR);
+	} catch (JsonException $e) {
+		$json =	[];
+		spip_log('Failed to parse Json data : ' . $e->getMessage(), _LOG_ERREUR);
+	}
 	$json = pipeline('pre_syndication_publications', $json);
 	$publications  = false;
 	if (isset($json['response']) and isset($json['response']['docs']) and is_array($json['response']['docs'])) {
