@@ -1,24 +1,27 @@
 <?php
 
-if (!defined('_ECRIRE_INC_VERSION')) return;
+if (!defined('_ECRIRE_INC_VERSION')) {
+	return;
+}
 
-function action_editer_hal_dist($arg=null) {
+function action_editer_hal_dist($arg = null) {
 
-	if (is_null($arg)){
+	if (is_null($arg)) {
 		$securiser_action = charger_fonction('securiser_action', 'inc');
 		$arg = $securiser_action();
 	}
 
-	if (!$id_hal = intval($arg)){
+	if (!$id_hal = intval($arg)) {
 		$id_hal = hal_inserer();
 	}
 
-	if (!$id_hal)
-		return array(0,'');
+	if (!$id_hal) {
+		return [0,''];
+	}
 
 	$err = hal_modifier($id_hal);
 
-	return array($id_hal,$err);
+	return [$id_hal,$err];
 }
 
 
@@ -29,29 +32,31 @@ function action_editer_hal_dist($arg=null) {
  */
 function hal_inserer() {
 
-	$champs = array(
+	$champs = [
 		'statut' => 'prop',
-		'date' => date('Y-m-d H:i:s'));
-	
+		'date' => date('Y-m-d H:i:s')];
+
 	// Envoyer aux plugins
-	$champs = pipeline('pre_insertion',
-		array(
-			'args' => array(
+	$champs = pipeline(
+		'pre_insertion',
+		[
+			'args' => [
 				'table' => 'spip_hals',
-			),
+			],
 			'data' => $champs
-		)
+		]
 	);
 
-	$id_hal = sql_insertq("spip_hals", $champs);
-	pipeline('post_insertion',
-		array(
-			'args' => array(
+	$id_hal = sql_insertq('spip_hals', $champs);
+	pipeline(
+		'post_insertion',
+		[
+			'args' => [
 				'table' => 'spip_hals',
 				'id_objet' => $id_hal
-			),
+			],
 			'data' => $champs
-		)
+		]
 	);
 
 	return $id_hal;
@@ -66,58 +71,65 @@ function hal_inserer() {
  * @param array|bool $set
  * @return string
  */
-function hal_modifier($id_hal, $set=false) {
+function hal_modifier($id_hal, $set = false) {
 	include_spip('inc/modifier');
 	include_spip('inc/filtres');
 	$c = collecter_requests(
 		// white list
-		objet_info('hal','champs_editables'),
+		objet_info('hal', 'champs_editables'),
 		// black list
-		array('statut', 'date'),
+		['statut', 'date'],
 		// donnees eventuellement fournies
 		$set
 	);
 
 	$q = '';
-	$hal_api = "http://api.archives-ouvertes.fr/search/";
-	if(isset($c['authid']) && $c['authid']>0) {
-		$q .= 'authId_i:'.$c['authid'];
+	$hal_api = 'http://api.archives-ouvertes.fr/search/';
+	if (isset($c['authid']) and $c['authid'] > 0) {
+		$q .= 'authId_i:' . $c['authid'];
 	}
-	if(isset($c['idhal']) && $c['idhal']!='') {
-		$q .= 'authIdHal_s:'.$c['idhal'];
+	if (isset($c['idhal']) and $c['idhal'] != '') {
+		$q .= 'authIdHal_s:' . $c['idhal'];
 	}
-	$hal_api = parametre_url($hal_api,'q',$q);
-	if(!function_exists('lire_config'))
+	$hal_api = parametre_url($hal_api, 'q', $q);
+	if (!function_exists('lire_config')) {
 		include_spip('inc/config');
-	$hal_api = parametre_url($hal_api,'sort','modifiedDate_s desc');
+	}
+	$hal_api = parametre_url($hal_api, 'sort', 'modifiedDate_s desc');
 
 	$c['url_syndic'] = $hal_api;
-	
+
 	// Si le dépot est publie, invalider les caches et demander sa reindexation
-	$t = sql_getfetsel("statut", "spip_hals", "id_hal=".intval($id_hal));
+	$t = sql_getfetsel('statut', 'spip_hals', 'id_hal=' . intval($id_hal));
 	if ($t == 'publie') {
 		$invalideur = "id='hal/$id_hal'";
 		$indexation = true;
 	}
 
-	if ($err = objet_modifier_champs('hal', $id_hal,
-		array(
-			'nonvide' => array('titre' => _T('info_sans_titre')),
+	if (
+		$err = objet_modifier_champs(
+			'hal',
+			$id_hal,
+			[
+			'nonvide' => ['titre' => _T('info_sans_titre')],
 			'invalideur' => $invalideur,
 			'indexation' => $indexation
-		),
-		$c))
+			],
+			$c
+		)
+	) {
 		return $err;
+	}
 
 	// Modification de statut, changement de rubrique ?
-	$c = collecter_requests(array('date', 'statut'),array(),$set);
+	$c = collecter_requests(['date', 'statut'], [], $set);
 	include_spip('action/editer_objet');
-	$err = objet_instituer('hal',$id_hal, $c);
+	$err = objet_instituer('hal', $id_hal, $c);
 
 	return $err;
 }
 
-function instituer_hal($id_hal, $c){
+function instituer_hal($id_hal, $c) {
 	include_spip('action/editer_objet');
-	return objet_instituer('hal',$id_hal, $c);
+	return objet_instituer('hal', $id_hal, $c);
 }

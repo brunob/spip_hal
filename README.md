@@ -9,4 +9,4 @@ Le plugin [HAL - Auteurs](https://github.com/kent1D/spip_hal_auteurs) peut être
 
 ## Nécessite
 
-* [SPIP](http://www.spip.net) >= 3.0
+* [SPIP](http://www.spip.net) >= 4.1
