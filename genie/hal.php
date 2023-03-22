@@ -44,7 +44,7 @@ function executer_une_syndication_hal() {
  *
  * @param int $now_id_hal
  * 	Identifiant numérique du dépot
- * @return bool|string
+ * @return int
  */
 function hal_a_jour($now_id_hal) {
 	$call = debug_backtrace();
@@ -115,18 +115,23 @@ function inserer_publication_hal($data, $now_id_hal, $statut, $url_syndic, &$fai
 	// si true, un lien deja syndique arrivant par une autre source est ignore
 	// par defaut [false], chaque source a sa liste de liens, eventuellement
 	// les memes
-	define('_HAL_SYNDICATION_URL_UNIQUE', true);
+	if (!defined('_HAL_SYNDICATION_URL_UNIQUE')) {
+		define('_HAL_SYNDICATION_URL_UNIQUE', true);
+	}
 
 	// Si false, on ne met pas a jour un lien deja syndique avec ses nouvelles
 	// donnees ; par defaut [true] : on met a jour si le contenu a change
 	// Attention si on modifie a la main un article syndique, les modifs sont
 	// ecrasees lors de la syndication suivante
-	define('_HAL_SYNDICATION_CORRECTION', true);
+	if (!defined('_HAL_SYNDICATION_CORRECTION')) {
+		define('_HAL_SYNDICATION_CORRECTION', true);
+	}
 
 	// Chercher les liens de meme cle
 	// S'il y a plusieurs liens qui repondent, il faut choisir le plus proche
 	// (ie meme titre et pas deja fait), le mettre a jour et ignorer les autres
 	$n = 0;
+	$id = null;
 	$s = sql_select(
 		'id_hals_publication,docid,titre,id_hal,statut',
 		'spip_hals_publications',
@@ -202,30 +207,30 @@ function inserer_publication_hal($data, $now_id_hal, $statut, $url_syndic, &$fai
 	// Mise a jour du contenu (titre,auteurs,description,date?,source...)
 	$vals = [
 		'docid' => $data['docid'],
-		'titre' => $data['titre'],
-		'soustitre' => $data['soustitre'],
-		'identifiant' => $data['identifiant'],
-		'typdoc' => $data['typdoc'],
-		'date_ecriture' => $data['date_ecriture'],
-		'date_soumission' => $data['date_soumission'],
-		'date_production' => $data['date_production'],
-		'date_production_format' => $data['date_production_format'],
-		'date_modif' => $data['date_modif'],
-		'citation_reference' => $data['citation_reference'],
-		'citation_complete' => $data['citation_complete'],
-		'page' => $data['page'],
-		'lesauteurs' => $data['lesauteurs'],
-		'livre' => $data['livre'],
-		'revue' => $data['revue'],
-		'revue_id' => $data['revue_id'],
-		'commentaire' => $data['commentaire'],
-		'isbn' => $data['isbn'],
+		'titre' => $data['titre'] ?? '',
+		'soustitre' => $data['soustitre'] ?? '',
+		'identifiant' => $data['identifiant'] ?? '',
+		'typdoc' => $data['typdoc'] ?? '',
+		'date_ecriture' => $data['date_ecriture'] ?? '',
+		'date_soumission' => $data['date_soumission'] ?? '',
+		'date_production' => $data['date_production'] ?? '',
+		'date_production_format' => $data['date_production_format'] ?? '',
+		'date_modif' => $data['date_modif'] ?? '',
+		'citation_reference' => $data['citation_reference'] ?? '',
+		'citation_complete' => $data['citation_complete'] ?? '',
+		'page' => $data['page'] ?? '',
+		'lesauteurs' => $data['lesauteurs'] ?? '',
+		'livre' => $data['livre'] ?? '',
+		'revue' => $data['revue'] ?? '',
+		'revue_id' => $data['revue_id'] ?? '',
+		'commentaire' => $data['commentaire'] ?? '',
+		'isbn' => $data['isbn'] ?? '',
 		//'format' => $data['format'],
-		'hal_complet' => $data['hal_complet'],
-		'editeur' => $data['editeur'],
-		'url_publication' => $data['url_publication'],
-		'tags' => $data['tags'],
-		'lang' => substr($data['lang'], 0, 10)
+		'hal_complet' => $data['hal_complet'] ?? '',
+		'editeur' => $data['editeur'] ?? '',
+		'url_publication' => $data['url_publication'] ?? '',
+		'tags' => $data['tags'] ?? '',
+		'lang' => substr($data['lang'] ?? '', 0, 10)
 	];
 
 	sql_updateq('spip_hals_publications', $vals, 'id_hals_publication=' . intval($id_hals_publication));

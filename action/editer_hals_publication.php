@@ -9,7 +9,7 @@ if (!defined('_ECRIRE_INC_VERSION')) {
  *
  * $c est un contenu (par defaut on prend le contenu via _request())
  *
- * @param int $id_hal
+ * @param int $id_hals_publication
  * @param array|bool $set
  * @return string
  */
@@ -36,8 +36,8 @@ function hals_publication_modifier($id_hals_publication, $set = false) {
 			$id_hals_publication,
 			[
 			'nonvide' => [],
-			'invalideur' => $invalideur,
-			'indexation' => $indexation
+			'invalideur' => $invalideur ?? false,
+			'indexation' => $indexation ?? false
 			],
 			$c
 		)

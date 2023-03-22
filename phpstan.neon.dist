@@ -1,0 +1,12 @@
+includes:
+	- phpstan-baseline.neon
+
+parameters:
+	paths:
+		- .
+	excludePaths:
+		analyseAndScan:
+			- lang
+	level: 3
+	bootstrapFiles:
+		- phpstan-constants.php
