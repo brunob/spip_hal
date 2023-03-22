@@ -7,6 +7,6 @@ parameters:
 	excludePaths:
 		analyseAndScan:
 			- lang
-	level: 2
+	level: 3
 	bootstrapFiles:
 		- phpstan-constants.php
