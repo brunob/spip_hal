@@ -44,7 +44,7 @@ function executer_une_syndication_hal() {
  *
  * @param int $now_id_hal
  * 	Identifiant numérique du dépot
- * @return bool|string
+ * @return int
  */
 function hal_a_jour($now_id_hal) {
 	$call = debug_backtrace();
