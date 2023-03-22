@@ -1,0 +1,391 @@
+parameters:
+	ignoreErrors:
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 1
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function collecter_requests not found\\.$#"
+			count: 2
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 5
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function objet_info not found\\.$#"
+			count: 1
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function objet_instituer not found\\.$#"
+			count: 2
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function objet_modifier_champs not found\\.$#"
+			count: 1
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function parametre_url not found\\.$#"
+			count: 2
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function pipeline not found\\.$#"
+			count: 2
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function sql_insertq not found\\.$#"
+			count: 1
+			path: action/editer_hal.php
+
+		-
+			message: "#^Function collecter_requests not found\\.$#"
+			count: 2
+			path: action/editer_hals_publication.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: action/editer_hals_publication.php
+
+		-
+			message: "#^Function objet_info not found\\.$#"
+			count: 1
+			path: action/editer_hals_publication.php
+
+		-
+			message: "#^Function objet_instituer not found\\.$#"
+			count: 1
+			path: action/editer_hals_publication.php
+
+		-
+			message: "#^Function objet_modifier_champs not found\\.$#"
+			count: 1
+			path: action/editer_hals_publication.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: action/editer_hals_publication.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: action/instituer_hals_publication.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/instituer_hals_publication.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: action/instituer_hals_publication.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: action/instituer_hals_publication.php
+
+		-
+			message: "#^Function sql_updateq not found\\.$#"
+			count: 1
+			path: action/instituer_hals_publication.php
+
+		-
+			message: "#^Function suivre_invalideur not found\\.$#"
+			count: 1
+			path: action/instituer_hals_publication.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: action/update_publications.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: action/update_publications.php
+
+		-
+			message: "#^Function job_queue_add not found\\.$#"
+			count: 1
+			path: action/update_publications.php
+
+		-
+			message: "#^Function queue_schedule not found\\.$#"
+			count: 1
+			path: action/update_publications.php
+
+		-
+			message: "#^Function spip_log not found\\.$#"
+			count: 1
+			path: action/update_publications.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 3
+			path: formulaires/editer_hal.php
+
+		-
+			message: "#^Function formulaires_editer_objet_charger not found\\.$#"
+			count: 1
+			path: formulaires/editer_hal.php
+
+		-
+			message: "#^Function formulaires_editer_objet_traiter not found\\.$#"
+			count: 1
+			path: formulaires/editer_hal.php
+
+		-
+			message: "#^Function formulaires_editer_objet_verifier not found\\.$#"
+			count: 1
+			path: formulaires/editer_hal.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 2
+			path: formulaires/editer_hal.php
+
+		-
+			message: "#^Function set_request not found\\.$#"
+			count: 4
+			path: formulaires/editer_hal.php
+
+		-
+			message: "#^Function _request not found\\.$#"
+			count: 3
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function formulaires_editer_objet_charger not found\\.$#"
+			count: 1
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function formulaires_editer_objet_traiter not found\\.$#"
+			count: 1
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function formulaires_editer_objet_verifier not found\\.$#"
+			count: 1
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 4
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function set_request not found\\.$#"
+			count: 1
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function verifier_corriger_date_saisie not found\\.$#"
+			count: 2
+			path: formulaires/editer_hals_publication.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 3
+			path: genie/hal.php
+
+		-
+			message: "#^Function job_queue_add not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function lire_config not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function parametre_url not found\\.$#"
+			count: 2
+			path: genie/hal.php
+
+		-
+			message: "#^Function pipeline not found\\.$#"
+			count: 3
+			path: genie/hal.php
+
+		-
+			message: "#^Function recuperer_url not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function spip_log not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_date_proche not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_fetch not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_fetsel not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_in not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_insertq not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_quote not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_select not found\\.$#"
+			count: 1
+			path: genie/hal.php
+
+		-
+			message: "#^Function sql_updateq not found\\.$#"
+			count: 3
+			path: genie/hal.php
+
+		-
+			message: "#^Function charger_fonction not found\\.$#"
+			count: 1
+			path: hal_administrations.php
+
+		-
+			message: "#^Function effacer_meta not found\\.$#"
+			count: 1
+			path: hal_administrations.php
+
+		-
+			message: "#^Function include_spip not found\\.$#"
+			count: 1
+			path: hal_administrations.php
+
+		-
+			message: "#^Function maj_plugin not found\\.$#"
+			count: 1
+			path: hal_administrations.php
+
+		-
+			message: "#^Function parametre_url not found\\.$#"
+			count: 1
+			path: hal_administrations.php
+
+		-
+			message: "#^Function sql_allfetsel not found\\.$#"
+			count: 3
+			path: hal_administrations.php
+
+		-
+			message: "#^Function sql_drop_table not found\\.$#"
+			count: 2
+			path: hal_administrations.php
+
+		-
+			message: "#^Function sql_updateq not found\\.$#"
+			count: 3
+			path: hal_administrations.php
+
+		-
+			message: "#^Function autoriser not found\\.$#"
+			count: 1
+			path: hal_autoriser.php
+
+		-
+			message: "#^Function sql_allfetsel not found\\.$#"
+			count: 2
+			path: hal_autoriser.php
+
+		-
+			message: "#^Function sql_getfetsel not found\\.$#"
+			count: 1
+			path: hal_autoriser.php
+
+		-
+			message: "#^Function _T not found\\.$#"
+			count: 1
+			path: hal_fonctions.php
+
+		-
+			message: "#^Function affdate not found\\.$#"
+			count: 1
+			path: hal_fonctions.php
+
+		-
+			message: "#^Function affdate_mois_annee not found\\.$#"
+			count: 1
+			path: hal_fonctions.php
+
+		-
+			message: "#^Function optimiser_sansref not found\\.$#"
+			count: 1
+			path: hal_pipelines.php
+
+		-
+			message: "#^Function recuperer_fond not found\\.$#"
+			count: 2
+			path: hal_pipelines.php
+
+		-
+			message: "#^Function sql_delete not found\\.$#"
+			count: 1
+			path: hal_pipelines.php
+
+		-
+			message: "#^Function sql_select not found\\.$#"
+			count: 1
+			path: hal_pipelines.php
+
+		-
+			message: "#^Function pipeline not found\\.$#"
+			count: 1
+			path: inc/hal.php
+
+		-
+			message: "#^Function spip_log not found\\.$#"
+			count: 1
+			path: inc/hal.php
