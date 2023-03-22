@@ -112,8 +112,8 @@ function hal_modifier($id_hal, $set = false) {
 			$id_hal,
 			[
 			'nonvide' => ['titre' => _T('info_sans_titre')],
-			'invalideur' => $invalideur,
-			'indexation' => $indexation
+			'invalideur' => $invalideur ?? false,
+			'indexation' => $indexation ?? false
 			],
 			$c
 		)

@@ -127,6 +127,7 @@ function inserer_publication_hal($data, $now_id_hal, $statut, $url_syndic, &$fai
 	// S'il y a plusieurs liens qui repondent, il faut choisir le plus proche
 	// (ie meme titre et pas deja fait), le mettre a jour et ignorer les autres
 	$n = 0;
+	$id = null;
 	$s = sql_select(
 		'id_hals_publication,docid,titre,id_hal,statut',
 		'spip_hals_publications',
