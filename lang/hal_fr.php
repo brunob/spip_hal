@@ -11,7 +11,7 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'date_production' => 'Date de production',
 
 	// E
-	'explication_halid' => 'Identifiant d\'un auteur sur HAL (identifiant numérique unique ou idHal)',
+	'explication_halid' => 'Identifiant d\'un auteur sur HAL (identifiant idHal)',
 	'explication_limite' => 'Nombre maximal de publication à récupérer à chaque appel.',
 	'explication_nombre_publication' => 'Nombre maximal de publications rapatriées à chaque appel de l\'API.',
 
@@ -23,7 +23,6 @@ $GLOBALS[$GLOBALS['idx_lang']] = array(
 	'info_1_hal' => '1 dépôt HAL',
 	'info_aucun_hal' => 'Aucun dépôt HAL',
 	'info_idhal' => 'idHal de l\'auteur :',
-	'info_authid' => 'Identifiant numérique unique de l\'auteur dans HAL :',
 	'info_depot_court' => 'Dépôt',
 	'info_nb_hals' => '@nb@ dépôts HAL',
 	'info_nb_publications' => 'Publications',

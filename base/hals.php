@@ -52,7 +52,6 @@ function hal_declarer_tables_objets_sql($tables) {
 		'icone_objet' => 'hal',
 		'field' => [
 			'id_hal' => 'bigint(21) NOT NULL',
-			'authid' => 'bigint(21) NOT NULL',
 			'idhal' => 'varchar(200) NOT NULL',
 			'structid' => 'bigint(21) NOT NULL',
 			'titre'	=> "text DEFAULT '' NOT NULL",
@@ -68,7 +67,7 @@ function hal_declarer_tables_objets_sql($tables) {
 			'limite'	=> 'bigint(21) NOT NULL',
 			'oubli'	=> "VARCHAR(3) DEFAULT 'non'"
 		],
-		'champs_editables' => ['titre', 'authid', 'idhal', 'descriptif','limite'],
+		'champs_editables' => ['titre', 'idhal', 'descriptif','limite'],
 		'key' => [
 			'PRIMARY KEY'	=> 'id_hal',
 			'KEY statut'	=> 'statut, date_syndic',

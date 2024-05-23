@@ -18,9 +18,6 @@ include_spip('inc/editer');
  */
 function formulaires_editer_hal_charger_dist($id_hal = 'new', $retour = '', $config_fonc = 'hals_edit_config', $row = [], $hidden = '') {
 	$valeurs = formulaires_editer_objet_charger('hal', $id_hal, null, null, $retour, '', $config_fonc);
-	if ($valeurs['authid'] != 0) {
-		$valeurs['halid'] = $valeurs['authid'];
-	}
 	if ($valeurs['idhal'] != '') {
 		$valeurs['halid'] = $valeurs['idhal'];
 	}
@@ -54,15 +51,5 @@ function hals_edit_config($row) {
  *
  */
 function formulaires_editer_hal_traiter_dist($id_hal = 'new', $retour = '', $config_fonc = 'hals_edit_config', $row = [], $hidden = '') {
-	// numérique -> authid
-	if (is_numeric(_request('halid'))) {
-		set_request('authid', _request('halid'));
-		set_request('idhal', '');
-	}
-	// sinon -> idHal
-	else {
-		set_request('authid', 0);
-		set_request('idhal', _request('halid'));
-	}
 	return formulaires_editer_objet_traiter('hal', $id_hal, '', '', $retour, '', $config_fonc, $row, $hidden);
 }

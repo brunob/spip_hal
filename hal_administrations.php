@@ -45,6 +45,10 @@ function hal_upgrade($nom_meta_base_version, $version_cible) {
 	$maj['0.1.9'] = [
 		['maj_tables', ['spip_hals']]
 	];
+	$maj['0.2.0'] = [
+		['maj_tables', ['spip_hals']],
+		['sql_alter', 'TABLE spip_hals DROP authid'],
+	];
 
 	include_spip('base/upgrade');
 	maj_plugin($nom_meta_base_version, $version_cible, $maj);
