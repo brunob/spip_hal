@@ -85,9 +85,6 @@ function hal_modifier($id_hal, $set = false) {
 
 	$q = '';
 	$hal_api = 'http://api.archives-ouvertes.fr/search/';
-	if (isset($c['authid']) and $c['authid'] > 0) {
-		$q .= 'authId_i:' . $c['authid'];
-	}
 	if (isset($c['idhal']) and $c['idhal'] != '') {
 		$q .= 'authIdHal_s:' . $c['idhal'];
 	}
